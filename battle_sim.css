@@ -4,8 +4,8 @@
 	font-size: 15px;
 	border: 1px solid purple;
     width: 615px;
-    border-radius: 10px;
     padding: 10px 10px 10px 10px;
+    height: 650px;
 }
 
 #default_checked {
@@ -46,6 +46,155 @@ input[type=number] {
     display:none
 }
 
+#battle_sim_form2, #battle_sim_form1 {
+ display: inline-block;
+ vertical-align: top;
+ }
+ 
+ #simulator_wrapper {
+ margin-top: 10px;
+ width: 1300px;
+    margin: 0 auto;
+}
+
+label, text {
+display: inline-block;
+width: 120px;
+font-family: Caviar Dreams Bold;
+text-transform: uppercase;
+font-size: 16px;
+}
+
+#showadv {
+width: 230px;
+}
+
+#usedef {
+width: 230px;
+}
+
+#battle_sim, #battle_sim_enemy {
+	background: url("map-background.bmp");
+	    background-size: cover;
+	}
+	
+/* Input Text background */
+
+input[type="text"] {
+	background: url("bgbos.png");
+	color: white;
+   	height: 29px;
+    	width: 150;
+	border: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+	
+/* Submit Button */
+
+input[type="submit"] {
+	background: url("Attack1.png");
+	border: none;
+	height: 41px;
+	width: 165px;
+	cursor: pointer;
+    margin-left:170px;
+    margin-top:2px;
+}
+
+input[type="submit"]:hover {
+	background: url("Attack2.png");
+	}
+	
+#epic_abilities img, #enemy_epic_abilities img{
+	cursor: pointer;
+}
+
+/* Class Selector CSS */
+.class-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+
+
+.class-selector input:active +.drinkcard-class{opacity: .9;}
+.class-selector input:checked +.drinkcard-class{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+
+.drinkcard-class{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-class:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Results DIV */
+
+#results_box {
+	width: 798px;
+	height:200px;
+	background: url("map-background.bmp");
+	background-size: cover;
+	border: 1px #3F1B2E solid;
+}
+
+#results_header {
+	width: 800px;
+	height: 50px; 
+	background: #3F1B2E;
+	font-family: Caviar Dreams Bold;
+    	color: #FFF32B;
+   	font-size: 30px;
+   	vertical-align: middle;
+   	line-height: 50px;
+   	text-align: center;
+}
+
+#enemy_header {
+	width: 635px; 
+	height: 50px;
+	background: url("Info_BG.png");
+	margin-left: -10px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        background: #3F1B2E;
+	font-family: Caviar Dreams Bold;
+    	color: #FFF32B;
+   	font-size: 30px;
+   	vertical-align: middle;
+   	line-height: 50px;
+   	text-align: center;
+	}
+	
+.results p {
+	font-family: Verdana, Tahoma, Georgia, sans-serif;
+	}	
+
+#choice1html, #defeatchancehtml, #enemydefeatchancehtml, #alternativestext, #otherchoiceshtml {
+	width: 650px; 
+	margin-left: 10px;
+	font-family: tahoma, verdana, sans-serif !important;
+	}
+	
+	
 #simulation {
     display:none
 }
@@ -55,26 +204,64 @@ input[type=number] {
 }
 
 #results_box {
-    position:relative;
-    left:500px;
-    top:100px;
     display:none;
 }
 
-#simulation {
-    position:relative;
-    top:-210px;
+#results_header {
+    display:none;
 }
 
 #simulation_button {
-    position:relative;
-    top:-220px;
     display:none;
 }
 
 #return_button {
-    position:relative;
-    top:-330px;
-    left:500px;
     display:none;
+}
+
+.results_wrapper {
+width: 1300px;
+    margin: 0 auto;}
+   
+
+/* IMPORTANT */
+
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url('/battle-sim/fonts/caviardreams-webfont.eot');
+    src: url('/battle-sim/fonts/caviardreams-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/battle-sim/fonts/caviardreams-webfont.woff2') format('woff2'),
+         url('/battle-sim/fonts/caviardreams-webfont.woff') format('woff'),
+         url('/battle-sim/fonts/caviardreams-webfont.ttf') format('truetype'),
+         url('/battle-sim/fonts/caviardreams-webfont.svg#caviar_dreamsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'Caviar Dreams Bold';
+    src: url('/battle-sim/fonts/caviardreams_bold-webfont.eot');
+    src: url('/battle-sim/fonts/caviardreams_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/battle-sim/fonts/caviardreams_bold-webfont.woff2') format('woff2'),
+         url('/battle-sim/fonts/caviardreams_bold-webfont.woff') format('woff'),
+         url('/battle-sim/fonts/caviardreams_bold-webfont.ttf') format('truetype'),
+         url('/battle-sim/fonts/caviardreams_bold-webfont.svg#caviar_dreamsbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Myriad Set Pro Thin';
+    src: url('/battle-sim/fonts/myriad-set-pro_thin-webfont.eot');
+    src: url('/battle-sim/fonts/myriad-set-pro_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/battle-sim/fonts/myriad-set-pro_thin-webfont.woff2') format('woff2'),
+         url('/battle-sim/fonts/myriad-set-pro_thin-webfont.woff') format('woff'),
+         url('/battle-sim/fonts/myriad-set-pro_thin-webfont.ttf') format('truetype'),
+         url('/battle-sim/fonts/myriad-set-pro_thin-webfont.svg#myriad_set_prothin') format('svg');
+    font-weight: thin;
+    font-style: normal;
+
 }

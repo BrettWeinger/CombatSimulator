@@ -1,6 +1,5 @@
-<!doctype html>
-<html>
 <head>
+<link href="http://www.adventuresofthespiral.com/wp-content/themes/AoSTheme1/style.css" rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet" href="battle_sim.css">
 <meta charset="utf-8">
 <script src="battle_sim.js"></script>
@@ -10,26 +9,45 @@
 <div id="simulator_wrapper">
 <div id="battle_sim_form1">
 	<form id="battle_sim" onsubmit="return combatSimulator()">
-    Unit Name: <input type="text" id="unit_name">
+	<div id="enemy_header">UNIT INFORMATION</div>
+    <label for="u_name">Unit Name: </label> <input type="text" id="unit_name">
     <br/>
-    Unit Class:
-    <!-- Button types changed from checkboxes to radio buttons, IDs remain the same -->
-    <input type="radio" name="bucc" id="buccaneer_checkbox" onclick="setClassBuccaneer();displayMeleeEpics();changeBaseStatStrength();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage.">
-    <input type="radio" name="musk" id="musketeer_checkbox" onclick="setClassMusketeer();displayRangedEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Musketeer.png" alt="Musketeer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge.">
-    <input type="radio" name="priv" id="privateer_checkbox" onclick="setClassPrivateer();displayMeleeEpics();displayRangedEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Privateer.png" alt="Privateer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice.">
-    <input type="radio" name="swash" id="swashbuckler_checkbox" onclick="setClassSwashbuckler();displayMeleeEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Swashbuckler.png" alt="Swashbuckler" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge.">
-    <input type="radio" name="wd" id="witchdoctor_checkbox" onclick="setClassWitchdoctor();displayMagicalEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Witchdoctor.png" alt="Witchdoctor" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers.">
+    <label for="u_class">Unit Class:</label>
+    <!-- Button types changed from checkboxes to radio buttons, IDs remain the same --> 
+    
+    
+    <div class="class-selector">
+
+          <input  id="buccaneer_checkbox" type="radio" name="class_selector"  onclick="setClassBuccaneer();displayMeleeEpics();changeBaseStatStrength();changeEnemyDefenseType();lockTextFields()"/>
+     <label class="drinkcard-class" for="buccaneer_checkbox">    <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage."> </label>
+              
+        <input id="musketeer_checkbox" type="radio" name="class_selector"  onclick="setClassMusketeer();displayRangedEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()"/>
+       <label class="drinkcard-class "for="musketeer_checkbox">    <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Musketeer.png" alt="Musketeer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge."></label>
+        
+
+        <input id="privateer_checkbox" type="radio" name="class_selector" onclick="setClassPrivateer();displayMeleeEpics();displayRangedEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()"/>
+        <label class="drinkcard-class" for="privateer_checkbox"><img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Privateer.png" alt="Privateer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice."></label>
+
+        
+        <input id="swashbuckler_checkbox" type="radio" name="class_selector" onclick="setClassSwashbuckler();displayMeleeEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()" />
+        <label class="drinkcard-class "for="swashbuckler_checkbox"> <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Swashbuckler.png" alt="Swashbuckler" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge."></label>
+        
+              
+        
+        <input id="witchdoctor_checkbox" type="radio" name="class_selector" onclick="setClassWitchdoctor();displayMagicalEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()" />
+        <label class="drinkcard-class"for="witchdoctor_checkbox"> <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_WitchDoctor.png" alt="Witchdoctor" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers."></label>
+        
+      
+    </div>
 
 
-	Unit level: <input type="number" name="u_level" id="unit_level" min="1" max="70">
+
+      
+    
+    <label for="u_level">Unit level:</label> <input type="number" name="u_level" id="unit_level" min="1" max="70">
     <br/>
-    Use Default Stats: <input type="checkbox" name="use_default" id="hide_checkbox" checked onclick="hideStats()"> &nbsp&nbsp&nbsp
-        <div id="privateer_selector">
+    <label id="usedef" for="use_default">Use Default Stats:</label> <input type="checkbox" name="use_default" id="hide_checkbox" checked onclick="hideStats()" > &nbsp&nbsp&nbsp
+         <div id="privateer_selector">
         <input type="radio" name="select_melee" id="melee_privateer" onclick="setPrivateerMelee();displayMeleeEpics();changeEnemyDefenseType()"> <text>Melee</text>
         <input type="radio" name="select_ranged" id="ranged_privateer" onclick="setPrivateerRanged();displayRangedEpics();changeEnemyDefenseType()"> <text>Ranged</text>
         </div>
@@ -65,40 +83,62 @@
     <img id="vengeance_strike" width="250px" src="VengStrike0.png" title="Make a bonus attack after the enemy hits" onclick="changeVengeanceStrike()">
     <br/>
     <br/>
-    <text id="class_epics_text">Show Advanced Epics:</text> <input type="checkbox" name="class_based" id="class_based_checkbox" onchange="toggleClassBasedEpics()">
+  <label id="showadv" fpr="enemy_class_epics_text">   <text id="class_epics_text" style="width: 190px;">Show Advanced Epics:</text> <input type="checkbox" name="class_based" id="class_based_checkbox" onchange="toggleClassBasedEpics()"></label>
     <div id="class_based_checked">
         <br/>
         <img id="elusive" width="250px" src="Elusive0.png" title="Bonus Dodge when Health falls below 50%" onclick="changeElusive()">
         <img id="improvedmojoblast" width="250px" src="IMB0.png" title="Basic magic attack affects a larger area. +10% Damage at Rank 3. Must be a Witchdoctor to use." onclick="changeImprovedMojoBlast()">
         <img id="turnthetide" width="250px" src="TurnTheTide0.png" title="Additional Damage, Accuracy, and Dodge when Health falls below 50%" onclick="changeTurnTheTide()">
         <img id="witchhunter" width="250px" src="WitchHunter0.png" title="Make a bonus attack if the enemy uses magic. Enemy loses 50% Damage" onclick="changeWitchHunter()">
+ 
         </div>
     <br/>
     <br/>
-  	<input type="submit" name="Attack" value="ATTACK">
+  	<input type="submit" name="Attack" value="">
     </div>
     </form>
 </div>
 <div id="battle_sim_form2">
 	<form id="battle_sim_enemy">
-    Enemy Name: <input type="text" id="enemy_name">
+	<div id="enemy_header">ENEMY INFORMATION</div>
+    <label for="e_name">Enemy Name: </label> <input type="text" id="enemy_name">
     <br/>
-    Enemy Class:
-    <input type="radio" name="e_bucc" id="enemy_buccaneer_checkbox" onclick="setEnemyClassBuccaneer();displayEnemyMeleeEpics();changeEnemyBaseStatStrength();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage.">
-    <input type="radio" name="e_musk" id="enemy_musketeer_checkbox" onclick="setEnemyClassMusketeer();displayEnemyRangedEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Musketeer.png" alt="Buccaneer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge.">
-    <input type="radio" name="e_priv" id="enemy_privateer_checkbox" onclick="setEnemyClassPrivateer();displayEnemyMeleeEpics();displayEnemyRangedEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Privateer.png" alt="Buccaneer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice.">
-    <input type="radio" name="e_swash" id="enemy_swashbuckler_checkbox" onclick="setEnemyClassSwashbuckler();displayEnemyMeleeEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Swashbuckler.png" alt="Buccaneer" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge.">
-    <input type="radio" name="e_wd" id="enemy_witchdoctor_checkbox" onclick="setEnemyClassWitchdoctor();displayEnemyMagicalEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Witchdoctor.png" alt="Buccaneer" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers.">
+    <label for="e_class">Enemy Class: </label>
+<div class="class-selector">
 
-	Enemy level: <input type="number" name="e_level" id="enemy_level" min="1" max="70">
+          <input  id="enemy_buccaneer_checkbox" type="radio" name="class_selector"  onclick="setEnemyClassBuccaneer();displayEnemyMeleeEpics();changeEnemyBaseStatStrength();changeDefenseType()"/>
+     <label class="drinkcard-class" for="enemy_buccaneer_checkbox">    <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage."> </label>
+              
+        <input id="enemy_musketeer_checkbox" type="radio" name="class_selector"  onclick="setEnemyClassMusketeer();displayEnemyRangedEpics();changeEnemyBaseStatAgility();changeDefenseType()"/>
+       <label class="drinkcard-class "for="enemy_musketeer_checkbox">    <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Musketeer.png" alt="Musketeer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge."></label>
+        
+
+        <input id="enemy_privateer_checkbox" type="radio" name="class_selector" onclick="setEnemyClassPrivateer();displayEnemyMeleeEpics();displayEnemyRangedEpics();changeEnemyBaseStatWill();changeDefenseType()"/>
+        <label class="drinkcard-class" for="enemy_privateer_checkbox"><img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Privateer.png" alt="Privateer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice."></label>
+
+        
+        <input id="enemy_swashbuckler_checkbox" type="radio" name="class_selector" onclick="setEnemyClassSwashbuckler();displayEnemyMeleeEpics();changeEnemyBaseStatAgility();changeDefenseType()" />
+        <label class="drinkcard-class "for="enemy_swashbuckler_checkbox"> <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_Swashbuckler.png" alt="Swashbuckler" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge."></label>
+        
+              
+        
+        <input id="enemy_witchdoctor_checkbox" type="radio" name="class_selector" onclick="setEnemyClassWitchdoctor();displayEnemyMagicalEpics();changeEnemyBaseStatWill();changeDefenseType()" />
+        <label class="drinkcard-class"for="enemy_witchdoctor_checkbox"> <img src="http://adventuresofthespiral.com/battle-sim/Icon_Class_WitchDoctor.png" alt="Witchdoctor" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers."></label>
+        
+      
+    </div>
+
+
+
+    
+  
+    
+  
+
+	<label for="e_level">Enemy level: </label> <input type="number" name="e_level" id="enemy_level" min="1" max="70">
     <br/>
-    Use Default Stats: <input type="checkbox" name="use_default" id="enemy_hide_checkbox" checked onclick="hideEnemyStats()"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <div id="enemy_privateer_selector">
+    <label for="e_use_def" id="usedef">Use Default Stats:</label> <input type="checkbox" name="use_default" id="enemy_hide_checkbox" checked onclick="hideEnemyStats()"></label>
+     <div id="enemy_privateer_selector">
         <input type="radio" name="select_melee" id="enemy_melee_privateer" onclick="setEnemyPrivateerMelee();displayEnemyMeleeEpics();changeDefenseType()"> <text>Melee</text>
         <input type="radio" name="select_ranged" id="enemy_ranged_privateer" onclick="setEnemyPrivateerRanged();displayEnemyRangedEpics();changeDefenseType()"> <text>Ranged</text>
     </div>
@@ -134,33 +174,47 @@
     <img id="enemy_vengeance_strike" width="250px" src="VengStrike0.png" title="Make a bonus attack after the enemy hits" onclick="isEnemy();changeVengeanceStrike()">
     <br/>
     <br/>
-    <text id="enemy_class_epics_text">Show Advanced Epics:</text> <input type="checkbox" name="enemy_class_based" id="enemy_class_based_checkbox" onchange="toggleEnemyClassBasedEpics()">
+    <label for="enemy_class_epics_text" id="showadv"><text id="enemy_class_epics_text" style="width: 230px;">Show Advanced Epics:</text> <input type="checkbox" name="enemy_class_based" id="enemy_class_based_checkbox" onchange="toggleEnemyClassBasedEpics()"></label>
     <div id="enemy_class_based_checked">
         <br/>
         <img id="enemyelusive" width="250px" src="Elusive0.png" title="Bonus Dodge when Health falls below 50%" onclick="isEnemy();changeElusive()">
         <img id="enemyimprovedmojoblast" width="250px" src="IMB0.png" title="Basic magic attack affects a larger area. +10% Damage at Rank 3. Must be a Witchdoctor to use." onclick="isEnemy();changeImprovedMojoBlast()">
         <img id="enemyturnthetide" width="250px" src="TurnTheTide0.png" title="Additional Damage, Accuracy, and Dodge when Health falls below 50%" onclick="isEnemy();changeTurnTheTide()">
         <img id="enemywitchhunter" width="250px" src="WitchHunter0.png" title="Make a bonus attack if the enemy uses magic. Enemy loses 50% Damage" onclick="isEnemy();changeWitchHunter()">
+ 
         </div>
     <br/>
     <br/>
-  	<input type="submit" name="Attack" value="ATTACK">
     </div>
     </form>
 </div>
 </div>
-<div id="results_box" style="height:200px;width:375px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+<div class="results_wrapper">
+<div id="results_header">RESULTS</div>
+<div id="results_box" style="height:200px;width:778px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;  float: left;">
 <p id="choice1html"></p><text id="defeatchancehtml"></text><br><text id="enemydefeatchancehtml"></text>
     <br><br>
     <text id="alternativestext"></text>
     <br>
     <text id="otherchoiceshtml"></text>
 </div>
-    <br>
-<div id="simulation" style="height:375px;width:375px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">Click the button below to generate a simulation. Simulations are possible outcomes that can occur, and the simulator analyzes the likelihood of each to determine the best option.</div> 
+ 
+ <br>
+<div id="simulation" style="height:375px;width:375px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;     margin-left: -800px;
+    margin-top: 204px;">Click the button below to generate a simulation. Simulations are possible outcomes that can occur, and the simulator analyzes the likelihood of each to determine the best option.</div> 
+<div id="return_button"><button type="button" style="height:50px;width:397px;font-size:18px;     position: relative;  top: -365;" onclick="returnToSimulator()">Return to Simulator</button>
+</div>
     <br>
     <div id="simulation_button">
-    <button type="button" style="height:30px;width:397px;font-size:18px" onclick="newSimulation();combatSimulator()">New Simulation</button></div>
-    <div id="return_button"><button type="button" style="height:50px;width:397px;font-size:18px" onclick="returnToSimulator()">Return to Simulator</button></div>
+    <button type="button" style="height:30px;width:397px;font-size:18px;" onclick="newSimulation();combatSimulator()">New Simulation</button></div>
+    </div>
+<div id="footer">
+        
+        <p>© <a href="/">Adventures of the Spiral</a> 2015, Portion © <a href="http://www.kingsisle.com">Kingsisle Entertainment</a>
+		<br />
+	All content on this site requires permission for reprint
+	</p>
+     
+     </div>
 </body>
 </html>

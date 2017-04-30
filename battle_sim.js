@@ -54,8 +54,9 @@ var toggleEnemyClassBasedEpics = function() {
 }
 
 var returnToSimulator = function() {
-    document.getElementById('simulator_wrapper').style.display = 'block'
+    document.getElementById('simulator_wrapper').style.display = 'inline-block'
     document.getElementById('simulation').style.display = 'none'
+    document.getElementById('results_header').style.display = 'none'
     document.getElementById('results_box').style.display = 'none'
     document.getElementById('simulation_button').style.display = 'none'
     document.getElementById('return_button').style.display = 'none'
@@ -5327,10 +5328,11 @@ if(!document.getElementById('otherchoiceshtml').innerHTML.length) {
 }
 }
 document.getElementById('simulator_wrapper').style.display = 'none'
-document.getElementById('simulation').style.display = 'block'
-document.getElementById('results_box').style.display = 'block'
-document.getElementById('simulation_button').style.display = 'block'
-document.getElementById('return_button').style.display = 'block'
+document.getElementById('simulation').style.display = 'inline-block'
+document.getElementById('results_box').style.display = 'inline-block'
+document.getElementById('simulation_button').style.display = 'inline-block'
+document.getElementById('return_button').style.display = 'inline-block'
+document.getElementById('results_header').style.display = 'block'
 return false;
 };
 

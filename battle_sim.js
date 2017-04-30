@@ -53,6 +53,83 @@ var toggleEnemyClassBasedEpics = function() {
     }
 }
 
+var returnToSimulator = function() {
+    document.getElementById('simulator_wrapper').style.display = 'block'
+    document.getElementById('simulation').style.display = 'none'
+    document.getElementById('results_box').style.display = 'none'
+    document.getElementById('simulation_button').style.display = 'none'
+    document.getElementById('return_button').style.display = 'none'
+    document.getElementById('choice1html').innerHTML = ""    
+    document.getElementById('defeatchancehtml').innerHTML = ""  
+    document.getElementById('enemydefeatchancehtml').innerHTML = ""
+    document.getElementById('alternativestext').innerHTML = ""
+    document.getElementById('otherchoiceshtml').innerHTML = ""
+    document.getElementById('simulation').innerHTML = "Click the button below to generate a simulation. Simulations are possible outcomes that can occur, and the simulator analyzes the likelihood of each to determine the best option."
+    window.scrollTo(0,0)
+    document.getElementById('unit_name').value = ""
+    document.getElementById('unit_level').value = ""
+    document.getElementById('enemy_name').value = ""
+    document.getElementById('enemy_level').value = ""
+    document.getElementById('buccaneer_checkbox').checked = false;
+    document.getElementById('musketeer_checkbox').checked = false;
+    document.getElementById('privateer_checkbox').checked = false;
+    document.getElementById('swashbuckler_checkbox').checked = false;
+    document.getElementById('witchdoctor_checkbox').checked = false;
+    document.getElementById('enemy_buccaneer_checkbox').checked = false;
+    document.getElementById('enemy_musketeer_checkbox').checked = false;
+    document.getElementById('enemy_privateer_checkbox').checked = false;
+    document.getElementById('enemy_swashbuckler_checkbox').checked = false;
+    document.getElementById('enemy_witchdoctor_checkbox').checked = false;
+    document.getElementById('blade_storm').src = "BladeStorm0.png"
+    document.getElementById('cheap_shot').src = "CheapShot0.png"
+    document.getElementById('first_strike').src = "FirstStrike0.png"
+    document.getElementById('flanking').src = "Flanking0.png"
+    document.getElementById('hold_the_line').src = "HTL0.png"
+    document.getElementById('relentless').src = "Relentless0.png"
+    document.getElementById('repel_boarders').src = "RepelBorders0.png"
+    document.getElementById('riposte').src = "Riposte0.png"
+    document.getElementById('second_chance').src = "SecondChance0.png"
+    document.getElementById('vengeance_strike').src = "VengStrike0.png"
+    document.getElementById('elusive').src = "Elusive0.png"
+    document.getElementById('improvedmojoblast').src = "IMB0.png"
+    document.getElementById('turnthetide').src = "TurnTheTide0.png"
+    document.getElementById('witchhunter').src = "WitchHunter0.png"
+    document.getElementById('enemy_blade_storm').src = "BladeStorm0.png"
+    document.getElementById('enemy_cheap_shot').src = "CheapShot0.png"
+    document.getElementById('enemy_first_strike').src = "FirstStrike0.png"
+    document.getElementById('enemy_flanking').src = "Flanking0.png"
+    document.getElementById('enemy_hold_the_line').src = "HTL0.png"
+    document.getElementById('enemy_relentless').src = "Relentless0.png"
+    document.getElementById('enemy_repel_boarders').src = "RepelBorders0.png"
+    document.getElementById('enemy_riposte').src = "Riposte0.png"
+    document.getElementById('enemy_second_chance').src = "SecondChance0.png"
+    document.getElementById('enemy_vengeance_strike').src = "VengStrike0.png"
+    document.getElementById('enemyelusive').src = "Elusive0.png"
+    document.getElementById('enemyimprovedmojoblast').src = "IMB0.png"
+    document.getElementById('enemyturnthetide').src = "TurnTheTide0.png"
+    document.getElementById('enemywitchhunter').src = "WitchHunter0.png"
+    document.getElementById('hide_checkbox').checked = true;
+    document.getElementById('default_checked').style.display = 'none';
+    document.getElementById('unit_accuracy').value = ""
+    document.getElementById('unit_dodge').value = ""
+    document.getElementById('unit_damage').value = ""
+    document.getElementById('unit_health').value = ""
+    document.getElementById('unit_base_stat').value = ""
+    document.getElementById('unit_defense').value = ""
+    document.getElementById('enemy_hide_checkbox').checked = true;
+    document.getElementById('enemy_default_checked').style.display = 'none';
+    document.getElementById('enemy_accuracy').value = ""
+    document.getElementById('enemy_dodge').value = ""
+    document.getElementById('enemy_damage').value = ""
+    document.getElementById('enemy_health').value = ""
+    document.getElementById('enemy_base_stat').value = ""
+    document.getElementById('enemy_defense').value = ""
+    document.getElementById('class_based_checkbox').checked = false;
+    document.getElementById('class_based_checked').style.display = 'none'
+    document.getElementById('enemy_class_based_checkbox').checked = false;
+    document.getElementById('enemy_class_based_checked').style.display = 'none'
+}
+
 var setClassBuccaneer = function() {
     if(document.getElementById('buccaneer_checkbox').checked) {
         document.getElementById('musketeer_checkbox').checked = false;
@@ -646,10 +723,15 @@ var changeWitchHunter = function() {
     enemyEpic = false;
 }
 
+var showSimulation = false;
+var newSimulation = function() {
+    showSimulation = true;
+    document.getElementById('simulation').innerHTML = ""
+}
 
 var combatSimulator = function() {
 // INITIALIZE UNIT NAME, CLASS, & LEVEL
-var unitName = document.getElementById("unit_name").value;
+unitName = document.getElementById("unit_name").value;
 if(unitName === "") {
     unitName = "Unit"
 }
@@ -682,7 +764,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var unitMaxHealth = y;
+unitMaxHealth = y;
 var y = Math.round(-0.00000000033436240061413*x*x*x*x*x*x + 0.00000011013755813957200*x*x*x*x*x - 0.00001189281267005400000*x*x*x*x + 0.00049769547715131800000*x*x*x - 0.00648126516032804000000*x*x + 3.49512430622213000000000*x + 4.03529679637034000000000)
 if(x >= 16) {
     y = y + 3
@@ -755,7 +837,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var unitMaxHealth = y;
+unitMaxHealth = y;
 var y = Math.round(0.00000000962745250708552*x*x*x*x*x*x - 0.00000190840153727403000*x*x*x*x*x + 0.00013577298460184600000*x*x*x*x - 0.00414920859188250000000*x*x*x + 0.05285181805543330000000*x*x + 4.24134522157931000000000*x + 5.45460442448716000000000)
 if(x >= 16) {
     y = y + 3
@@ -828,7 +910,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var unitMaxHealth = y;
+unitMaxHealth = y;
 var y = Math.round(-0.00000000210015888664136*x*x*x*x*x*x + 0.00000047621236968793000*x*x*x*x*x - 0.00003745209420362480000*x*x*x*x + 0.001104841477490920000008*x*x*x - 0.00453350231402842000000*x*x + 3.06618454317281000000000*x + 2.82964779552012000000000)
 if(x >= 16) {
     y = y + 3
@@ -902,7 +984,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var unitMaxHealth = y;
+unitMaxHealth = y;
 var y = Math.round(-0.00000000181490453828731*x*x*x*x*x*x + 0.00000050586147454061100*x*x*x*x*x - 0.00005272552109676730000*x*x*x*x + 0.00255001623999080000000*x*x*x - 0.05730592581980960000000*x*x + 3.86656188277121000000000*x + 0.49563250947276000000000)
 if(x >= 16) {
     y = y + 3
@@ -975,7 +1057,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var unitMaxHealth = y;
+unitMaxHealth = y;
 var y = Math.round(-0.00000000736769026083578*x*x*x*x*x*x + 0.00000175546135403569000*x*x*x*x*x - 0.00016166257063643000000*x*x*x*x + 0.00717272647364458000000*x*x*x - 0.15520562049411400000000*x*x + 4.80119147084481000000000*x - 2.38220384548535000000000)
 if(x >= 16) {
     y = y + 3
@@ -1060,7 +1142,7 @@ if(document.getElementById('hide_checkbox').checked) { //Using default stats
         return false; // And terminate simulator
         }
     } else if(healthInput >= 0) { //If input exists
-        var unitMaxHealth = parseInt(document.getElementById('unit_health').value); //Replace
+        unitMaxHealth = parseInt(document.getElementById('unit_health').value); //Replace
     }
     var damageInput = document.getElementById('unit_damage').value;
     if(damageInput.length === 0 || damageInput < 0) {
@@ -1114,7 +1196,7 @@ if(document.getElementById('hide_checkbox').checked) { //Using default stats
 }
 
 // INITIALIZE ENEMY NAME, CLASS, & LEVEL
-var enemyName = document.getElementById("enemy_name").value;
+enemyName = document.getElementById("enemy_name").value;
 if(enemyName === "") {
     enemyName = "Enemy"
 }
@@ -1147,7 +1229,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var enemyMaxHealth = y;
+enemyMaxHealth = y;
 var y = Math.round(-0.00000000033436240061413*x*x*x*x*x*x + 0.00000011013755813957200*x*x*x*x*x - 0.00001189281267005400000*x*x*x*x + 0.00049769547715131800000*x*x*x - 0.00648126516032804000000*x*x + 3.49512430622213000000000*x + 4.03529679637034000000000)
 if(x >= 16) {
     y = y + 3
@@ -1219,7 +1301,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var enemyMaxHealth = y;
+enemyMaxHealth = y;
 var y = Math.round(0.00000000962745250708552*x*x*x*x*x*x - 0.00000190840153727403000*x*x*x*x*x + 0.00013577298460184600000*x*x*x*x - 0.00414920859188250000000*x*x*x + 0.05285181805543330000000*x*x + 4.24134522157931000000000*x + 5.45460442448716000000000)
 if(x >= 16) {
     y = y + 3
@@ -1291,7 +1373,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var enemyMaxHealth = y;
+enemyMaxHealth = y;
 var y = Math.round(-0.00000000210015888664136*x*x*x*x*x*x + 0.00000047621236968793000*x*x*x*x*x - 0.00003745209420362480000*x*x*x*x + 0.001104841477490920000008*x*x*x - 0.00453350231402842000000*x*x + 3.06618454317281000000000*x + 2.82964779552012000000000)
 if(x >= 16) {
     y = y + 3
@@ -1364,7 +1446,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var enemyMaxHealth = y;
+enemyMaxHealth = y;
 var y = Math.round(-0.00000000181490453828731*x*x*x*x*x*x + 0.00000050586147454061100*x*x*x*x*x - 0.00005272552109676730000*x*x*x*x + 0.00255001623999080000000*x*x*x - 0.05730592581980960000000*x*x + 3.86656188277121000000000*x + 0.49563250947276000000000)
 if(x >= 16) {
     y = y + 3
@@ -1436,7 +1518,7 @@ if(x >= 48) {
 if(x >= 64) {
     y = y + 200
 }
-var enemyMaxHealth = y;
+enemyMaxHealth = y;
 var y = Math.round(-0.00000000736769026083578*x*x*x*x*x*x + 0.00000175546135403569000*x*x*x*x*x - 0.00016166257063643000000*x*x*x*x + 0.00717272647364458000000*x*x*x - 0.15520562049411400000000*x*x + 4.80119147084481000000000*x - 2.38220384548535000000000)
 if(x >= 16) {
     y = y + 3
@@ -1520,7 +1602,7 @@ if(document.getElementById('enemy_hide_checkbox').checked) { //Using default sta
         return false;
         }
     } else if(enemyHealthInput >= 0) {
-        var enemyMaxHealth = parseInt(document.getElementById('enemy_health').value);
+        enemyMaxHealth = parseInt(document.getElementById('enemy_health').value);
     }
     var enemyDamageInput = document.getElementById('enemy_damage').value;
     if(enemyDamageInput.length === 0 || enemyDamageInput < 0) {
@@ -1574,27 +1656,29 @@ if(document.getElementById('enemy_hide_checkbox').checked) { //Using default sta
 }
 
 // CONFIRMATION MESSAGES
+if(!showSimulation) {
 if(document.getElementById('hide_checkbox').checked) { //If default
-    var confirmation = confirm("The following stats have been calculated based on the given class and level. Click OK to continue, or click Cancel to change the default stats.\n\n" + unitName + "'s Health: " + unitMaxHealth + "\n" + unitName + "'s Damage: " + unitMaxDamage + "\n" + unitName + "'s Accuracy: " + unitMaxAccuracy + "\n" + unitName + "'s Dodge: " + unitMaxDodge)
+    confirmation = confirm("The following stats have been calculated based on the given class and level. Click OK to continue, or click Cancel to change the default stats.\n\n" + unitName + "'s Health: " + unitMaxHealth + "\n" + unitName + "'s Damage: " + unitMaxDamage + "\n" + unitName + "'s Accuracy: " + unitMaxAccuracy + "\n" + unitName + "'s Dodge: " + unitMaxDodge)
     if(!confirmation) {
         return false;
     }
 } else { //else customized
-    var confirmation = confirm("The following stats will be used in the simulations.\n\n" + unitName + "'s Health: " + unitMaxHealth + "\n" + unitName + "'s Damage: " + unitMaxDamage + "\n" + unitName + "'s Accuracy: " + unitMaxAccuracy + "\n" + unitName + "'s Dodge: " + unitMaxDodge)
+    confirmation = confirm("The following stats will be used in the simulations.\n\n" + unitName + "'s Health: " + unitMaxHealth + "\n" + unitName + "'s Damage: " + unitMaxDamage + "\n" + unitName + "'s Accuracy: " + unitMaxAccuracy + "\n" + unitName + "'s Dodge: " + unitMaxDodge)
     if(!confirmation) {
         return false;
     }
 }
 if(document.getElementById('enemy_hide_checkbox').checked) { //If default
-    var confirmation = confirm("The following stats have been calculated based on the given class and level. Click OK to continue, or click Cancel to change the default stats.\n\n" + enemyName + "'s Health: " + enemyMaxHealth + "\n" + enemyName + "'s Damage: " + enemyMaxDamage + "\n" + enemyName + "'s Accuracy: " + enemyMaxAccuracy + "\n" + enemyName + "'s Dodge: " + enemyMaxDodge)
+    confirmation = confirm("The following stats have been calculated based on the given class and level. Click OK to continue, or click Cancel to change the default stats.\n\n" + enemyName + "'s Health: " + enemyMaxHealth + "\n" + enemyName + "'s Damage: " + enemyMaxDamage + "\n" + enemyName + "'s Accuracy: " + enemyMaxAccuracy + "\n" + enemyName + "'s Dodge: " + enemyMaxDodge)
     if(!confirmation) {
         return false;
     }
 } else { //else customized
-    var confirmation = confirm("The following stats will be used in the simulations.\n\n" + enemyName + "'s Health: " + enemyMaxHealth + "\n" + enemyName + "'s Damage: " + enemyMaxDamage + "\n" + enemyName + "'s Accuracy: " + enemyMaxAccuracy + "\n" + enemyName + "'s Dodge: " + enemyMaxDodge)
+    confirmation = confirm("The following stats will be used in the simulations.\n\n" + enemyName + "'s Health: " + enemyMaxHealth + "\n" + enemyName + "'s Damage: " + enemyMaxDamage + "\n" + enemyName + "'s Accuracy: " + enemyMaxAccuracy + "\n" + enemyName + "'s Dodge: " + enemyMaxDodge)
     if(!confirmation) {
         return false;
     }
+}
 }
 
 // SET EPIC ABILITY RANKS
@@ -1879,17 +1963,9 @@ var movedIntoFlanking = false;
 var enemyMovedIntoFlanking = false;
 var flankingUnitDefeated = 0;
 var flankingEnemyDefeated = 0;
-    
-document.getElementById('choice1html').innerHTML = ""    
-document.getElementById('defeatchancehtml').innerHTML = ""  
-document.getElementById('enemydefeatchancehtml').innerHTML = ""
-document.getElementById('alternativestext').innerHTML = ""
-document.getElementById('otherchoiceshtml').innerHTML = ""
 
 // SET WEAPON TYPE
-if(unitClass === "Buccaneer" || unitClass === "Swashbuckler") {
-    var unitDamageType = "melee"
-} else if(unitClass === "Musketeer") {
+if(unitClass === "Musketeer") {
     var unitDamageType = "ranged"
 } else if(unitClass === "Witchdoctor") {
     var unitDamageType = "magical"
@@ -1899,12 +1975,12 @@ if(unitClass === "Buccaneer" || unitClass === "Swashbuckler") {
     } else {
         var unitDamageType = "melee" //Assume melee
     }
+} else {
+    var unitDamageType = "melee"
 }
 
 // SET ENEMY WEAPON TYPE
-if(enemyClass === "Buccaneer" || enemyClass === "Swashbuckler") {
-    var enemyDamageType = "melee"
-} else if(enemyClass === "Musketeer") {
+if(enemyClass === "Musketeer") {
     var enemyDamageType = "ranged"
 } else if(enemyClass === "Witchdoctor") {
     var enemyDamageType = "magical"
@@ -1914,12 +1990,14 @@ if(enemyClass === "Buccaneer" || enemyClass === "Swashbuckler") {
     } else {
         var enemyDamageType = "melee" //Assume melee
     }
+} else {
+    var enemyDamageType = "melee"
 }
 
 // POWER FUNCTIONS
-var powerAvailability = true;
+if(!showSimulation) powerAvailability = true;
 
-var activateSuperStrike = false;
+if(!showSimulation) activateSuperStrike = false;
 var superStrikePrompt = function() {
 activateSuperStrike = prompt("Attack with Super Strike?")
 if(activateSuperStrike === null) {
@@ -1942,7 +2020,7 @@ if(activateSuperStrike === "YES") {
 }
 };
 
-var activateMegaStrike = false;
+if(!showSimulation) activateMegaStrike = false;
 var megaStrikePrompt = function() {
 activateMegaStrike = prompt("Attack with Mega Strike?")
 if(activateMegaStrike === null) {
@@ -1965,7 +2043,7 @@ var checkMegaStrikeFunction = function() {
     }
 };
 
-var activateEpicStrike = false;
+if(!showSimulation) activateEpicStrike = false;
 var epicStrikePrompt = function() {
 activateEpicStrike = prompt("Attack with Epic Strike?")
 if(activateEpicStrike === null) {
@@ -1988,7 +2066,7 @@ var checkEpicStrikeFunction = function() {
     }
 };
 
-var activateBuccaneerSmash = false;
+if(!showSimulation) activateBuccaneerSmash = false;
 var buccaneerSmashPrompt = function() {
     activateBuccaneerSmash = prompt("Attack with Buccaneer Smash?")
     if(activateBuccaneerSmash === null) {
@@ -2011,7 +2089,7 @@ var checkBuccaneerSmashFunction = function() {
     }
 }
 
-var activateSwashbucklersStab = false;
+if(!showSimulation) activateSwashbucklersStab = false;
 var swashbucklersStabPrompt = function() {
     activateSwashbucklersStab = prompt("Attack with Swashbuckler's Stab?")
     if(activateSwashbucklersStab === null) {
@@ -2034,7 +2112,7 @@ var checkSwashbucklersStabFunction = function() {
     }
 }
 
-var activateSwashbucklersStrike = false;
+if(!showSimulation) activateSwashbucklersStrike = false;
 var swashbucklersStrikePrompt = function() {
     activateSwashbucklersStrike = prompt("Attack with Swashbuckler's Strike?")
     if(activateSwashbucklersStrike === null) {
@@ -2057,7 +2135,7 @@ var checkSwashbucklersStrikeFunction = function() {
     }
 }
 
-var activateBackStab = false;
+if(!showSimulation) activateBackStab = false;
 var backStabPrompt = function() {
     activateBackStab = prompt("Attack with Back Stab?")
     if(activateBackStab === null) {
@@ -2080,7 +2158,7 @@ var checkBackStabFunction = function() {
     }
 }
 
-var activateViciousCharge = false;
+if(!showSimulation) activateViciousCharge = false;
 var viciousChargePrompt = function() {
     activateViciousCharge = prompt("Attack with Vicious Charge?")
     if(activateViciousCharge === null) {
@@ -2103,7 +2181,7 @@ var checkViciousChargeFunction = function() {
     }
 }
 
-var activateBuccaneerStrike = false;
+if(!showSimulation) activateBuccaneerStrike = false;
 var buccaneerStrikePrompt = function() {
     activateBuccaneerStrike = prompt("Attack with Buccaneer Strike?")
     if(activateBuccaneerStrike === null) {
@@ -2126,7 +2204,7 @@ var checkBuccaneerStrikeFunction = function() {
     }
 }
 
-var activateBrutalCharge = false;
+if(!showSimulation) activateBrutalCharge = false;
 var brutalChargePrompt = function() {
     activateBrutalCharge = prompt("Attack with Brutal Charge?")
     if(activateBrutalCharge === null) {
@@ -2149,7 +2227,7 @@ var checkBrutalChargeFunction = function() {
     }
 }
 
-var activateMightyCharge = false;
+if(!showSimulation) activateMightyCharge = false;
 var mightyChargePrompt = function() {
     activateMightyCharge = prompt("Attack with Mighty Charge?")
     if(activateMightyCharge === null) {
@@ -2173,7 +2251,7 @@ var checkMightyChargeFunction = function() {
 }
 
 // LIST OF UNITS WITH AVAILABLE POWERS. DATA TAKEN FROM USER ARCHIVE WITH PERMISSION.
-if(powerAvailability === true) {
+if(powerAvailability === true && showSimulation === false) {
 if(unitName === "Wagyu Sanjuro" && unitLevel >= 46 || unitName === "Kobe Yojimbo" && unitLevel >= 46 || unitName === "Ratbeard" && unitLevel >= 28 || unitName === "Keisuke Yagi" && unitLevel >= 46 || unitName === "Kan Po" && unitLevel >= 46 || unitName === "Temujin" && unitLevel >= 46 || unitName === "Subodai" && unitLevel >= 46 || unitName === "Zang Cha" && unitLevel >= 46 || unitName === "Egg Shen" && unitLevel >= 46 || unitName === "Kawil Doomclaw" && unitLevel >= 43 || unitName === "Holkun Doomhorn" && unitLevel >= 43 || unitName === "Wing Chun" && unitLevel >= 43 || unitName === "Wu Tang" && unitLevel >= 43 || unitName === "Dead Mike" && unitLevel >= 47 || unitName === "S. M. Arson" && unitLevel >= 47 || unitName === "Lucy Sterling" && unitLevel >= 37 || unitName === "Sarah Steele" && unitLevel >= 37 || unitName === "Gerard" && unitLevel >= 37 || unitName === "Barnabus" && unitLevel >= 37 || unitName === "Malik" && unitLevel >= 47 || unitName === "Milo Graytail" && unitLevel >= 47 || unitName === "Giordano Bravo" && unitLevel >= 47 || unitName === "Gaspard de Vole" && unitLevel >= 47 || unitName === "Sergeant Shepherd" && unitLevel >= 47 || unitName === "Lucky Jack Russell" && unitLevel >= 47 || unitName === "Caracticus" && unitLevel >= 47 || unitName === "Birgus Latro" && unitLevel >= 47 || unitName === "Fan Flanders" && unitLevel >= 49 || unitName === "The Marchioness" && unitLevel >= 49 || unitName === "Peter Quint" && unitLevel >= 49) {
     superStrikePrompt();
 } else if(unitName === "Wagyu Sanjuro" && unitLevel >= 13 || unitName === "Kobe Yojimbo" && unitLevel >= 13 || unitName === "Ratbeard" && unitLevel >= 10 || unitName === "Keisuke Yagi" && unitLevel >= 13 || unitName === "Kan Po" && unitLevel >= 13 || unitName === "Temujin" && unitLevel >= 13 || unitName === "Subodai" && unitLevel >= 13 || unitName === "Zang Cha" && unitLevel >= 13 || unitName === "Egg Shen" && unitLevel >= 13 || unitName === "Kawil Doomclaw" && unitLevel >= 24 || unitName === "Holkun Doomhorn" && unitLevel >= 24 || unitName === "Wing Chun" && unitLevel >= 13 || unitName === "Wu Tang" && unitLevel >= 13 || unitName === "Dead Mike" && unitLevel >= 21 || unitName === "S. M. Arson" && unitLevel >= 21 || unitName === "Lucy Sterling" && unitLevel >= 15 || unitName === "Sarah Steele" && unitLevel >= 15 || unitName === "Gerard" && unitLevel >= 15 || unitName === "Barnabus" && unitLevel >= 15 || unitName === "Malik" && unitLevel >= 21 || unitName === "Milo Graytail" && unitLevel >= 21 || unitName === "Giordano Bravo" && unitLevel >= 21 || unitName === "Gaspard de Vole" && unitLevel >= 21 || unitName === "Sergeant Shepherd" && unitLevel >= 21 || unitName === "Lucky Jack Russell" && unitLevel >= 21 || unitName === "Caraticus" && unitLevel >= 21 || unitName === "Birgus Latro" && unitLevel >= 21 || unitName === "Fan Flanders" && unitLevel >= 17 || unitName === "The Marchioness" && unitLevel >= 17 || unitName === "Peter Quint" && unitLevel >= 17 || unitName === "Catbeard" && unitLevel >= 70) {
@@ -2182,7 +2260,7 @@ if(unitName === "Wagyu Sanjuro" && unitLevel >= 46 || unitName === "Kobe Yojimbo
     epicStrikePrompt();
     }
 }
-if(powerAvailability === true) {
+if(powerAvailability === true && showSimulation === false) {
     if(unitName === "Ratbeard" && unitLevel >= 55 || unitName === "Subodai" && unitLevel >= 46 || unitName === "Temujin" && unitLevel >= 46 || unitName === "Egg Shen" && unitLevel >= 46 || unitName === "Zang Cha" && unitLevel >= 46) {
         buccaneerSmashPrompt();
     } else if(unitName === "Kobe Yojimbo" && unitLevel >= 46 || unitName === "Wagyu Sanjuro" && unitLevel >= 46 || unitName === "Sarah Steele" && unitLevel >= 37 || unitName === "Lucy Sterling" && unitLevel >= 37) {
@@ -2203,13 +2281,13 @@ if(powerAvailability === true) {
         buccaneerStrikePrompt();
     }
 }
-if(powerAvailability === true) {
+if(powerAvailability === true && showSimulation === false) {
     if(unitName === "Barnabus" && unitLevel >= 15 || unitName === "Gerard" && unitLevel >= 15) {
         buccaneerStrikePrompt();
     }
 }
 
-if(powerAvailability === true) {
+if(powerAvailability === true && showSimulation === false) {
     if(unitName === "Chantal Livingstone" && unitLevel >= 49 || unitName === "Nausica" && unitLevel >= 45 || unitName === "Louis le Bisque" && unitLevel >= 37 || unitName === "Pepe DeTorteau" && unitLevel >= 37 || unitName === "Commander Emmett" || unitName === "Emmett" && unitLevel >= 37 || unitName === "Exter" && unitLevel >= 37) {
         superStrikePrompt();
     } else if(unitName === "Chantal Livingstone" && unitLevel >= 17 || unitName === "Nausica" && unitLevel >= 25 || unitName === "Louis le Bisque" && unitLevel >= 15 || unitName === "Pepe DeTorteau" && unitLevel >= 15 || unitName === "Lieutenant Emmett" || unitName === "Emmett" && unitLevel >= 15 || unitName === "Exter" && unitLevel >= 15 || unitName === "Tricky Vinny" && unitLevel >= 56) {
@@ -2490,16 +2568,21 @@ var hitFunction = function() {
         var criticalRoll = Math.random()*100
         if(criticalRoll < 4) {
             criticalHitMultiplier = 2;
+            criticalType = " and lands a Super Hit!"
         } else if(criticalRoll < 9) {
             criticalHitMultiplier = 5/3;
+            criticalType = " and lands a Mega Hit!"
         } else if(criticalRoll < 17) {
             criticalHitMultiplier = 4/3;
+            criticalType = " and lands a Epic Hit!"
         } else {
             criticalHitMultiplier = 1;
+            criticalType = "."
         }
     } else {
         attackSuccess = false;
         missCounter = missCounter + 1;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " activates " + attackType + " and misses!"
     }
     if(criticalRoll < 17) {
         activateBladeStorm = true;
@@ -2536,16 +2619,21 @@ var enemyHitFunction = function() {
         var enemyCriticalRoll = Math.random()*100
         if(enemyCriticalRoll < 4) {
             enemyCriticalHitMultiplier = 2;
+            criticalType = " and lands a Super Hit!"
         } else if(enemyCriticalRoll < 9) {
             enemyCriticalHitMultiplier = 5/3;
+            criticalType = " and lands a Mega Hit!"
         } else if(enemyCriticalRoll < 17) {
             enemyCriticalHitMultiplier = 4/3;
+            criticalType = " and lands a Epic Hit!"
         } else {
             enemyCriticalHitMultiplier = 1;
+            criticalType = "."
         }
     } else {
         attackSuccess = false;
         enemyMissCounter = enemyMissCounter + 1;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " activates " + attackType + " and misses!"
     }
     if(enemyCriticalRoll < 17) {
         activateEnemyBladeStorm = true;
@@ -2577,6 +2665,9 @@ var dealDamageToUnit = function() {
     if(damageCalculation > resistCalculation) { //If damage dealt is higher than can be resisted
         netDamage = damageCalculation - resistCalculation //New damage
         unitHealth = unitHealth - netDamage //Deal damage
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " hits with " + attackType + criticalType
+    } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " hits with " + attackType + ", but the attack is resisted!"
     }
     damageCalculation = 0;
     resistRoller = 0;
@@ -2592,6 +2683,9 @@ var dealDamageToEnemy = function() {
     if(damageCalculation > resistCalculation) { //If damage dealt is higher than can be resisted
         netDamage = damageCalculation - resistCalculation //New damage
         enemyHealth = enemyHealth - netDamage //Deal damage
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " hits with " + attackType + criticalType
+    } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " hits with " + attackType + ", but the attack is resisted!"
     }
     damageCalculation = 0;
     resistRoller = 0;
@@ -2668,7 +2762,13 @@ if(activateRelentless === true && relentless === true && relentlessCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Relentless";
+    if(unitDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -2706,7 +2806,13 @@ if(activateRelentless === true && relentless === true && relentlessCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Relentless";
+    if(unitDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -2744,7 +2850,13 @@ if(activateRelentless === true && relentless === true && relentlessCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Relentless";
+    if(unitDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -2786,7 +2898,13 @@ if(activateEnemyRelentless === true && enemyRelentless === true && enemyRelentle
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Relentless";
+    if(enemyDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -2823,7 +2941,13 @@ if(activateEnemyRelentless === true && enemyRelentless === true && enemyRelentle
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Relentless";
+    if(enemyDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -2860,7 +2984,13 @@ if(activateEnemyRelentless === true && enemyRelentless === true && enemyRelentle
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Relentless";
+    if(enemyDamageType === "melee") {
+        attackType = "Relentless";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Burst Fire"
+    } else {
+        attackType = "Mojo Echo"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -2895,6 +3025,13 @@ var firstStrikeFunction = function() {
 checkHealth();
 if(firstStrike === true && firstStrikeCount > 0 && attacking === true && unitDamageType === enemyDamageType) {
     if(skipFirstStrike === false) {
+    if(unitDamageType === "melee") {
+        attackType = "First Strike";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Quick Draw"
+    } else {
+        attackType = "Intuition"
+    }
     firstStrikeCount = firstStrikeCount - 1;
     if(firstStrikeRank === 3) {
         var firstStrikeMultiplier = 1.25;
@@ -2916,19 +3053,19 @@ if(firstStrike === true && firstStrikeCount > 0 && attacking === true && unitDam
     }
     if(randomHitChance2 < hitChance2) {
         attackSuccess2 = true;
-        attackType = "First Strike";
         var criticalRoll = Math.random()*100
         if(criticalRoll < 4) {
-
             criticalHitMultiplier = 2;
+            criticalType = " and lands a Super Hit!"
         } else if(criticalRoll < 9) {
-
             criticalHitMultiplier = 5/3;
+            criticalType = " and lands a Mega Hit!"
         } else if(criticalRoll < 17) {
-
             criticalHitMultiplier = 4/3;
+            criticalType = " and lands an Epic Hit!"
         } else {
             criticalHitMultiplier = 1;
+            criticalType = "."
             damageMultiplier = Math.random()*100;
             if(damageMultiplier < 200/3) {
             damageMultiplier = 1;
@@ -2946,6 +3083,9 @@ if(firstStrike === true && firstStrikeCount > 0 && attacking === true && unitDam
         if(damageCalculation > resistCalculation) { //If damage dealt is higher than can be resisted
         netDamage = damageCalculation - resistCalculation //New damage
         enemyHealth = enemyHealth - netDamage //Deal damage
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " hits with " + attackType + criticalType
+        } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " hits with " + attackType + ", but the attack is resisted!"
         }
         damageCalculation = 0;
         resistRoller = 0;
@@ -2978,6 +3118,7 @@ if(firstStrike === true && firstStrikeCount > 0 && attacking === true && unitDam
     } else {
         attackSuccess2 = false;
         missCounter = missCounter + 1;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " activates " + attackType + " and misses!"
         enemyRiposteFunction();
     }
 }
@@ -2989,6 +3130,13 @@ var enemyFirstStrikeFunction = function() {
 checkHealth();
 if(enemyFirstStrike === true && enemyFirstStrikeCount > 0 && enemyAttacking === true && enemyDamageType === unitDamageType) {
     if(skipEnemyFirstStrike === false) {
+    if(unitDamageType === "melee") {
+        attackType = "First Strike";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Quick Draw"
+    } else {
+        attackType = "Intuition"
+    }
     enemyFirstStrikeCount = enemyFirstStrikeCount - 1;
     if(enemyFirstStrikeRank === 3) {
         var enemyFirstStrikeMultiplier = 1.25;
@@ -3010,19 +3158,19 @@ if(enemyFirstStrike === true && enemyFirstStrikeCount > 0 && enemyAttacking === 
     }
     if(randomHitChance2 < hitChance2) {
         attackSuccess2 = true;
-        attackType = "First Strike";
         var enemyCriticalRoll = Math.random()*100
         if(enemyCriticalRoll < 4) {
-
             enemyCriticalHitMultiplier = 2;
+            criticalType = " and lands a Super Hit!"
         } else if(enemyCriticalRoll < 9) {
-
             enemyCriticalHitMultiplier = 5/3;
+            criticalType = " and lands a Mega Hit!"
         } else if(enemyCriticalRoll < 17) {
-
             enemyCriticalHitMultiplier = 4/3;
+            criticalType = " and lands an Epic Hit!"
         } else {
             enemyCriticalHitMultiplier = 1;
+            criticalType = "."
             enemyDamageMultiplier = Math.random()*100;
             if(enemyDamageMultiplier < 200/3) {
             enemyDamageMultiplier = 1;
@@ -3040,6 +3188,9 @@ if(enemyFirstStrike === true && enemyFirstStrikeCount > 0 && enemyAttacking === 
         if(damageCalculation > resistCalculation) { //If damage dealt is higher than can be resisted
         netDamage = damageCalculation - resistCalculation //New damage
         unitHealth = unitHealth - netDamage //Deal damage
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " hits with " + attackType + criticalType
+        } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " hits with " + attackType + ", but the attack is resisted!"
         }
         damageCalculation = 0;
         resistRoller = 0;
@@ -3072,6 +3223,7 @@ if(enemyFirstStrike === true && enemyFirstStrikeCount > 0 && enemyAttacking === 
     } else {
         attackSuccess2 = false;
         enemyMissCounter = enemyMissCounter + 1;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " activates " + attackType + " and misses!"
         riposteFunction();
     }
 }
@@ -3095,7 +3247,13 @@ if(activateBladeStorm === true && bladeStorm === true && bladeStormCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Blade Storm";
+    if(unitDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -3147,7 +3305,13 @@ if(activateBladeStorm === true && bladeStorm === true && bladeStormCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Blade Storm";
+    if(unitDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -3198,7 +3362,13 @@ if(activateBladeStorm === true && bladeStorm === true && bladeStormCount > 0 && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Blade Storm";
+    if(unitDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     hitFunction();
     if(attackSuccess === true) {
         dealDamageToEnemy();
@@ -3245,7 +3415,13 @@ if(activateEnemyBladeStorm === true && enemyBladeStorm === true && enemyBladeSto
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Blade Storm";
+    if(enemyDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -3298,7 +3474,13 @@ if(activateEnemyBladeStorm === true && enemyBladeStorm === true && enemyBladeSto
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Blade Storm";
+    if(enemyDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -3350,7 +3532,13 @@ if(activateEnemyBladeStorm === true && enemyBladeStorm === true && enemyBladeSto
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Blade Storm";
+    if(enemyDamageType === "melee") {
+        attackType = "Blade Storm";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Double Tap"
+    } else {
+        attackType = "Mojo Rising"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         dealDamageToUnit();
@@ -3392,6 +3580,7 @@ if(riposte === true && riposteCount > 0 && attacking === true && unitDamageType 
     riposteCount = riposteCount - 1;
     if(riposteRank === 3) {
         unitDodge = unitDodge + 15;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has gained 15 Dodge."
     }
     if(enemyFirstStrikeRank === 3) {
     enemyFirstStrikeFunction();
@@ -3400,7 +3589,13 @@ if(riposte === true && riposteCount > 0 && attacking === true && unitDamageType 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Riposte";
+    if(unitDamageType === "melee") {
+        attackType = "Riposte";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Return Fire"
+    } else {
+        attackType = "Counterspell"
+    }
     hitFunction();
     if(attackSuccess === true) {
         epicAbilityMultiplier = 4/3;
@@ -3443,7 +3638,13 @@ if(enemySecondChance === true && enemySecondChanceCount > 0 && enemyAttacking ==
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-        attackType = "Second Chance"
+        if(enemyDamageType === "melee") {
+            attackType = "Second Chance";
+        } else if(enemyDamageType === "ranged") {
+            attackType = "Quick Adjust"
+        } else {
+            attackType = "Jobu's Ruse"
+        }
         enemyHitFunction();
         if(attackSuccess === true) {
             dealDamageToUnit();
@@ -3480,6 +3681,7 @@ if(enemySecondChance === true && enemySecondChanceCount > 0 && enemyAttacking ==
     enemySecondChanceCounter--;
     if(enemySecondChanceRank === 3) {
         enemyAccuracy = enemyAccuracy*1.25;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has gained 25% Accuracy."
     } else {
     }
     witchHunterFunction();
@@ -3488,7 +3690,13 @@ if(enemySecondChance === true && enemySecondChanceCount > 0 && enemyAttacking ==
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-        attackType = "Second Chance"
+        if(enemyDamageType === "melee") {
+            attackType = "Second Chance";
+        } else if(enemyDamageType === "ranged") {
+            attackType = "Quick Adjust"
+        } else {
+            attackType = "Jobu's Ruse"
+        }
         enemyHitFunction();
         if(attackSuccess === true) {
             dealDamageToUnit();
@@ -3542,7 +3750,13 @@ if(riposte === true && riposteCount > 0 && attacking === true && unitDamageType 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Riposte";
+    if(unitDamageType === "melee") {
+        attackType = "Riposte";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Return Fire"
+    } else {
+        attackType = "Counterspell"
+    }
     hitFunction();
     if(attackSuccess === true) {
         epicAbilityMultiplier = 4/3;
@@ -3591,7 +3805,13 @@ if(enemyRiposte === true && enemyRiposteCount > 0 && enemyAttacking === true && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true && enemyRiposteCount > -1) {
-    attackType = "Riposte";
+    if(enemyDamageType === "melee") {
+        attackType = "Riposte";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Return Fire"
+    } else {
+        attackType = "Counterspell"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         enemyEpicAbilityMultiplier = 4/3;
@@ -3634,7 +3854,13 @@ if(secondChance === true && secondChanceCount > 0 && attacking === true) {
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-        attackType = "Second Chance"
+        if(unitDamageType === "melee") {
+            attackType = "Second Chance";
+        } else if(unitDamageType === "ranged") {
+            attackType = "Quick Adjust"
+        } else {
+            attackType = "Jobu's Ruse"
+        }
         hitFunction();
         if(attackSuccess === true) {
             dealDamageToEnemy();
@@ -3671,6 +3897,7 @@ if(secondChance === true && secondChanceCount > 0 && attacking === true) {
     secondChanceCounter--;
     if(secondChanceRank === 3) {
         unitAccuracy = unitAccuracy*1.25;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has gained 25% Accuracy."
     } else {
     }
     enemyWitchHunterFunction();
@@ -3679,7 +3906,13 @@ if(secondChance === true && secondChanceCount > 0 && attacking === true) {
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-        attackType = "Second Chance"
+        if(unitDamageType === "melee") {
+            attackType = "Second Chance";
+        } else if(unitDamageType === "ranged") {
+            attackType = "Quick Adjust"
+        } else {
+            attackType = "Jobu's Ruse"
+        }
         hitFunction();
         if(attackSuccess === true) {
             dealDamageToEnemy();
@@ -3724,6 +3957,7 @@ if(enemyRiposte === true && enemyRiposteCount > 0 && enemyAttacking === true && 
     enemyRiposteCount = enemyRiposteCount - 1;
     if(enemyRiposteRank === 3) {
         enemyDodge = enemyDodge + 15;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has gained 15 Dodge."
     }
     if(firstStrikeRank === 3) {
     firstStrikeFunction();
@@ -3732,7 +3966,13 @@ if(enemyRiposte === true && enemyRiposteCount > 0 && enemyAttacking === true && 
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true && enemyRiposteCount > -1) {
-    attackType = "Riposte";
+    if(enemyDamageType === "melee") {
+        attackType = "Riposte";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Return Fire"
+    } else {
+        attackType = "Counterspell"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         enemyEpicAbilityMultiplier = 4/3;
@@ -3778,7 +4018,13 @@ var vengeanceStrikeFunction = function() {
         skipFirstStrike = false;
         skipEnemyFirstStrike = false;
         if(attacking === true) {
-            attackType = "Vengeance Strike";
+            if(unitDamageType === "melee") {
+                attackType = "Vengeance Strike";
+            } else if(unitDamageType === "ranged") {
+                attackType = "True Grit"
+            } else {
+                attackType = "Retribution"
+            }
             hitFunction();
             if(attackSuccess === true) {
                 dealDamageToEnemy();
@@ -3790,6 +4036,7 @@ var vengeanceStrikeFunction = function() {
                 var stunRoll = Math.random()*100;
                 if(stunRoll < 35) {
                     enemyAttacking = false;
+                    if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has been stunned for the remainder of the round."
                 }
                 }
                 bladeStormFunction();
@@ -3830,7 +4077,13 @@ var enemyVengeanceStrikeFunction = function() {
         skipFirstStrike = false;
         skipEnemyFirstStrike = false;
         if(enemyAttacking === true) {
-            attackType = "Vengeance Strike";
+            if(enemyDamageType === "melee") {
+                attackType = "Vengeance Strike";
+            } else if(enemyDamageType === "ranged") {
+                attackType = "True Grit"
+            } else {
+                attackType = "Retribution"
+            }
             enemyHitFunction();
             if(attackSuccess === true) {
                 dealDamageToUnit();
@@ -3842,6 +4095,7 @@ var enemyVengeanceStrikeFunction = function() {
                 var stunRoll = Math.random()*100;
                 if(stunRoll < 35) {
                     attacking = false;
+                    if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has been stunned for the remainder of the round."
                 }
                 }
                 enemyBladeStormFunction();
@@ -3879,7 +4133,13 @@ if(enemyApproaching === true && repelBoarders === true && repelBoardersCount > 0
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Repel Boarders";
+    if(unitDamageType === "melee") {
+        attackType = "Repel Boarders";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Overwatch"
+    } else {
+        attackType = "Readied Spell"
+    }
     hitFunction();
     if(attackSuccess === true) {
         epicAbilityMultiplier = 2/3;
@@ -3905,6 +4165,7 @@ if(enemyApproaching === true && repelBoarders === true && repelBoardersCount > 0
         }
         if(repelBoardersRank === 3 && enemyHealth > 0) {
             enemyAccuracy = enemyAccuracy*0.5;
+            if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has lost 50% Accuracy."
         }
     } else {
         enemyRiposteFunction();
@@ -3924,7 +4185,13 @@ if(approaching === true && enemyRepelBoarders === true && enemyRepelBoardersCoun
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Repel Boarders";
+    if(enemyDamageType === "melee") {
+        attackType = "Repel Boarders";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Overwatch"
+    } else {
+        attackType = "Readied Spell"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         enemyEpicAbilityMultiplier = 2/3;
@@ -3950,6 +4217,7 @@ if(approaching === true && enemyRepelBoarders === true && enemyRepelBoardersCoun
         }
         if(enemyRepelBoardersRank === 3 && unitHealth > 0) {
             unitAccuracy = unitAccuracy*0.5;
+            if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has lost 50% Accuracy."
         }
     } else {
         riposteFunction();
@@ -3969,7 +4237,13 @@ if(enemyDisengaging === true && cheapShot === true && cheapShotCount > 0 && atta
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Cheap Shot";
+    if(unitDamageType === "melee") {
+        attackType = "Cheap Shot";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Parting Shot"
+    } else {
+        attackType = "Coward's Bane"
+    }
     hitFunction();
     if(attackSuccess === true) {
         epicAbilityMultiplier = 2/3;
@@ -4014,7 +4288,13 @@ if(disengaging === true && enemyCheapShot === true && enemyCheapShotCount > 0 &&
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Cheap Shot";
+    if(enemyDamageType === "melee") {
+        attackType = "Cheap Shot";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Parting Shot"
+    } else {
+        attackType = "Coward's Bane"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         enemyEpicAbilityMultiplier = 2/3;
@@ -4039,6 +4319,9 @@ if(disengaging === true && enemyCheapShot === true && enemyCheapShotCount > 0 &&
             }
         }
         if(enemyCheapShotRank === 3 && unitHealth > 0) {
+            if(showSimulation === true) {
+            document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has been immobilized."
+            }
             moving = false;
         }
     } else {
@@ -4060,7 +4343,13 @@ if(movedIntoFlanking === true && flanking === true && flankingCount > 0 && attac
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(attacking === true) {
-    attackType = "Flanking";
+    if(unitDamageType === "melee") {
+        attackType = "Flanking";
+    } else if(unitDamageType === "ranged") {
+        attackType = "Crossfire"
+    } else {
+        attackType = "Doomspell"
+    }
     hitFunction();
     if(attackSuccess === true) {
         epicAbilityMultiplier = 2/3;
@@ -4106,7 +4395,13 @@ if(enemyMovedIntoFlanking === true && enemyFlanking === true && enemyFlankingCou
     skipFirstStrike = false;
     skipEnemyFirstStrike = false;
     if(enemyAttacking === true) {
-    attackType = "Flanking";
+    if(enemyDamageType === "melee") {
+        attackType = "Flanking";
+    } else if(enemyDamageType === "ranged") {
+        attackType = "Crossfire"
+    } else {
+        attackType = "Doomspell"
+    }
     enemyHitFunction();
     if(attackSuccess === true) {
         enemyEpicAbilityMultiplier = 2/3;
@@ -4148,6 +4443,7 @@ if(enemyApproaching === true && holdTheLine === true && holdTheLineCount > 0) {
     var enemyMoving = false;
     if(holdTheLineRank === 3) {
         enemyDodge = enemyDodge*0.5;
+        document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has lost 50% Dodge."
     }
 }
 };
@@ -4156,9 +4452,13 @@ var enemyHoldTheLineFunction = function() {
 checkHealth();
 if(approaching === true && enemyHoldTheLine === true && enemyHoldTheLineCount > 0) {
     enemyHoldtheLineCount = enemyHoldTheLineCount - 1;
+    if(moving === false && showSimulation === true) {
+        document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has been immobilized."
+    }
     var moving = false;
     if(enemyHoldTheLineRank === 3) {
         unitDodge = unitDodge*0.5;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has lost 50% Dodge."
     }
 }
 };
@@ -4174,8 +4474,10 @@ if(witchHunter === true && witchHunterCount > 0 && attacking === true) {
         dealDamageToEnemy();
         enemyTurnTheTideFunction();
         enemyDamage = enemyDamage*0.5;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + " has lost 50% Damage."
         if(witchHunterRank === 3) {
             unitDefense = unitDefense*1.25;
+            if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + " " + unitName + " has gained 25% Resist."
         }
         hitCounter = hitCounter + 1;
         enemyVengeanceStrikeCounter++;
@@ -4213,8 +4515,10 @@ if(enemyWitchHunter === true && enemyWitchHunterCount > 0 && attacking === true)
         dealDamageToUnit();
         turnTheTideFunction();
         unitDamage = unitDamage*0.5;
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " has lost 50% Damage."
         if(enemyWitchHunterRank === 3) {
             enemyDefense = enemyDefense*1.25;
+            if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + " " + enemyName + " has gained 25% Resist."
         }
         enemyHitCounter = enemyHitCounter + 1;
         vengeanceStrikeCounter++;
@@ -4513,12 +4817,16 @@ var standardHitFunction = function() {
         var criticalRoll = Math.random()*100;
         if(criticalRoll < 4) {
             criticalHitMultiplier = 2;
+            criticalType = " and lands a Super Hit!"
         } else if(criticalRoll < 9) {
             criticalHitMultiplier = 5/3;
+            criticalType = " and lands a Mega Hit!"
         } else if(criticalRoll < 17) {
             criticalHitMultiplier = 4/3;
+            criticalType = " and lands an Epic Hit!"
         } else {
             criticalHitMultiplier = 1;
+            criticalType = "."
         }
     } else {
         attackSuccess = false;
@@ -4545,6 +4853,7 @@ var superStrikeFunction = function() {
     attackSuccess = true;
     var criticalRoll = 1;
     criticalHitMultiplier = 2;
+    criticalType = " and lands a Super Hit!"
     activateBladeStorm = true;
 };
 
@@ -4553,6 +4862,7 @@ var megaStrikeFunction = function() {
     attackSuccess = true;
     var criticalRoll = 5;
     criticalHitMultiplier = 5/3;
+    criticalType = " and lands a Mega Hit!"
     activateBladeStorm = true;
 };
 
@@ -4561,6 +4871,7 @@ var epicStrikeFunction = function() {
     attackSuccess = true;
     var criticalRoll = 10;
     criticalHitMultiplier = 4/3;
+    criticalType = " and lands an Epic Hit!"
     activateBladeStorm = true;
 };
 
@@ -4568,8 +4879,8 @@ var buccaneerSmashFunction = function() {
     damageMultiplier = 1;
     attackSuccess = true;
     var criticalRoll = 5;
-
     criticalHitMultiplier = 5/3;
+    criticalType = " and lands a Mega Hit!"
     activateBladeStorm = true;
 };
 
@@ -4577,8 +4888,8 @@ var swashbucklersStabFunction = function() {
     damageMultiplier = 1;
     attackSuccess = true;
     var criticalRoll = 5;
-
     criticalHitMultiplier = 5/3;
+    criticalType = " and lands a Mega Hit!"
     activateBladeStorm = true;
 };
 
@@ -4586,8 +4897,8 @@ var swashbucklersStrikeFunction = function() {
     damageMultiplier = 1;
     attackSuccess = true;
     var criticalRoll = 5;
-
     criticalHitMultiplier = 5/3;
+    criticalType = " and lands a Mega Hit!"
     activateBladeStorm = true;
 };
 
@@ -4597,16 +4908,17 @@ var backStabFunction = function() {
     attackSuccess = true;
     var criticalRoll = Math.random()*100;
     if(criticalRoll < 4) {
-
         criticalHitMultiplier = 2;
+        criticalType = " and lands a Super Hit!"
     } else if(criticalRoll < 9) {
-
         criticalHitMultiplier = 5/3;
+        criticalType = " and lands a Mega Hit!"
     } else if(criticalRoll < 17) {
-
         criticalHitMultiplier = 4/3;
+        criticalType = " and lands an Epic Hit!"
     } else {
         criticalHitMultiplier = 1;
+        criticalType = "."
     }
     if(criticalHitMultiplier > 1) {
         activateBladeStorm = true;
@@ -4637,16 +4949,17 @@ var viciousChargeFunction = function() {
     attackSuccess = true;
     var criticalRoll = Math.random()*100;
     if(criticalRoll < 4) {
-
         criticalHitMultiplier = 2;
+        criticalType = " and lands a Super Hit!"
     } else if(criticalRoll < 9) {
-
         criticalHitMultiplier = 5/3;
+        criticalType = " and lands a Mega Hit!"
     } else if(criticalRoll < 17) {
-
         criticalHitMultiplier = 4/3;
+        criticalType = " and lands an Epic Hit!"
     } else {
         criticalHitMultiplier = 1;
+        criticalType = "."
     }
     if(criticalHitMultiplier > 1) {
         activateBladeStorm = true;
@@ -4668,8 +4981,8 @@ var buccaneerStrikeFunction = function() {
     damageMultiplier = 1;
     attackSuccess = true;
     var criticalRoll = 5;
-   ;
     criticalHitMultiplier = 5/3;
+    criticalType = " and lands a Mega Hit!"
     activateBladeStorm = true;
 };
 
@@ -4679,16 +4992,17 @@ var brutalChargeFunction = function() {
     attackSuccess = true;
     var criticalRoll = Math.random()*100;
     if(criticalRoll < 4) {
-
         criticalHitMultiplier = 2;
+        criticalType = " and lands a Super Hit!"
     } else if(criticalRoll < 9) {
-
         criticalHitMultiplier = 5/3;
+        criticalType = " and lands a Mega Hit!"
     } else if(criticalRoll < 17) {
-
         criticalHitMultiplier = 4/3;
+        criticalType = " and lands an Epic Hit!"
     } else {
         criticalHitMultiplier = 1;
+        criticalType = "."
     }
     if(criticalHitMultiplier > 1) {
         activateBladeStorm = true;
@@ -4711,16 +5025,17 @@ var mightyChargeFunction = function() {
     attackSuccess = true;
     var criticalRoll = Math.random()*100;
     if(criticalRoll < 4) {
-
         criticalHitMultiplier = 2;
+        criticalType = " and lands a Super Hit!"
     } else if(criticalRoll < 9) {
-
         criticalHitMultiplier = 5/3;
+        criticalType = " and lands a Mega Hit!"
     } else if(criticalRoll < 17) {
-
         criticalHitMultiplier = 4/3;
+        criticalType = " and lands an Epic Hit!"
     } else {
         criticalHitMultiplier = 1;
+        criticalType = "."
     }
     if(criticalHitMultiplier > 1) {
         activateBladeStorm = true;
@@ -4796,6 +5111,9 @@ if(attacking === true) {
         if(damageCalculation > resistCalculation) { //If damage dealt is higher than can be resisted
         netDamage = damageCalculation - resistCalculation //New damage
         enemyHealth = enemyHealth - netDamage //Deal damage
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " attacks" + criticalType
+        } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " attacks, but the attack is resisted!"
         }
         damageCalculation = 0;
         resistRoller = 0;
@@ -4827,6 +5145,7 @@ if(attacking === true) {
             }
         }
     } else {
+        if(showSimulation) document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + " attacks and misses!"
         enemyRiposteFunction();
     }
 }
@@ -4834,6 +5153,21 @@ if(attacking === true) {
 if(activateBackStab === true) {
 bleedFunction();
 }
+if(showSimulation === true) {
+    if(unitHealth < 0) unitHealth = 0;
+    if(enemyHealth < 0) enemyHealth = 0;
+    document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + unitName + "'s Health: " + unitHealth
+    document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br>" + enemyName + "'s Health: " + enemyHealth
+    if(unitHealth / unitMaxHealth > enemyHealth / enemyMaxHealth) {
+        document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br> Combat rated as successful! <br>"
+    } else if(unitHealth / unitMaxHealth < enemyHealth / enemyMaxHealth) {
+        document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br> Combat rated as unsuccessful. <br>"   
+    } else {
+        document.getElementById('simulation').innerHTML = document.getElementById('simulation').innerHTML + "<br> Neither unit achieved a favorable outcome. <br>" 
+    }
+}
+if(showSimulation) displayResults = false;
+showSimulation = false;
 }
 
 if(unitHealth / unitMaxHealth > enemyHealth / enemyMaxHealth) {
@@ -4881,14 +5215,16 @@ if(enemyHealth <= 0) {
 }
 total++;
 };
-if(powerAvailability === false) {
-    alert(unitName + " is attacking " + enemyName + " with " + powerName + ".")
-} else {
-    alert(unitName + " is attacking " + enemyName + ".")
+if(powerAvailability === false && showSimulation === true) {
+    document.getElementById('simulation').innerHTML = unitName + " (Health: " + unitMaxHealth + ") is attacking " + enemyName + " (Health: " + enemyMaxHealth + ") with " + powerName + "."
+} else if(showSimulation) {
+     document.getElementById('simulation').innerHTML = unitName + " (Health: " + unitMaxHealth + ") is attacking " + enemyName + " (Health: " + enemyMaxHealth + ")."
 }
 
 // OPTION ANALYSIS
 
+displayResults = true;
+    
 while(total<25000) {
 combat();
 }
@@ -4950,7 +5286,7 @@ if(flankingRank > 0) {
 var getMaxOfArray = function(numArray) {
   return Math.max.apply(null, numArray);
 }
-
+if(displayResults) {
 var options = [successRate, approachSuccessRate, disengageSuccessRate, flankingSuccessRate] //4 items in array
 if(unitDamageType === "ranged" && approaching === true || unitDamageType === "magical" && approaching === true) { //Initialize parallel array 1
     var optionNames = ["Attack", "Approach", "Disengage from combat", "Flank"]
@@ -4987,8 +5323,14 @@ document.getElementById('otherchoiceshtml').innerHTML = document.getElementById(
 }
 }
 if(!document.getElementById('otherchoiceshtml').innerHTML.length) {
-    document.getElementById('otherchoiceshtml').innerHTML = "No other valid options found."
+    document.getElementById('otherchoiceshtml').innerHTML = "No other valid options found. <br>"
 }
+}
+document.getElementById('simulator_wrapper').style.display = 'none'
+document.getElementById('simulation').style.display = 'block'
+document.getElementById('results_box').style.display = 'block'
+document.getElementById('simulation_button').style.display = 'block'
+document.getElementById('return_button').style.display = 'block'
 return false;
 };
 

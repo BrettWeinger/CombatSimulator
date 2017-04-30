@@ -45,3 +45,36 @@ input[type=number] {
 #enemy_class_based_checked {
     display:none
 }
+
+#simulation {
+    display:none
+}
+
+#simulation_buttons {
+    display:none
+}
+
+#results_box {
+    position:relative;
+    left:500px;
+    top:100px;
+    display:none;
+}
+
+#simulation {
+    position:relative;
+    top:-210px;
+}
+
+#simulation_button {
+    position:relative;
+    top:-220px;
+    display:none;
+}
+
+#return_button {
+    position:relative;
+    top:-330px;
+    left:500px;
+    display:none;
+}

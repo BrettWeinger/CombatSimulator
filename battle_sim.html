@@ -3,7 +3,7 @@
 <head>
 <link type="text/css" rel="stylesheet" href="battle_sim.css">
 <meta charset="utf-8">
-<script src="battle_sim_code.js"></script>
+<script src="battle_sim.js"></script>
 <title>Battle Simulator</title>
 </head>
 <body>
@@ -13,60 +13,65 @@
     Unit Name: <input type="text" id="unit_name">
     <br/>
     Unit Class:
-    <input type="checkbox" name="bucc" id="buccaneer_checkbox" onclick="setClassBuccaneer();displayMeleeEpics();changeBaseStatStrength();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="musk" id="musketeer_checkbox" onclick="setClassMusketeer();displayRangedEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Musketeer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="priv" id="privateer_checkbox" onclick="setClassPrivateer();displayMeleeEpics();displayRangedEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Privateer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="swash" id="swashbuckler_checkbox" onclick="setClassSwashbuckler();displayMeleeEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Swashbuckler.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="wd" id="witchdoctor_checkbox" onclick="setClassWitchdoctor();displayMagicalEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
-    <img src="Icon_Class_Witchdoctor.png" alt="Buccaneer" width="40px">
+    <!-- Button types changed from checkboxes to radio buttons, IDs remain the same -->
+    <input type="radio" name="bucc" id="buccaneer_checkbox" onclick="setClassBuccaneer();displayMeleeEpics();changeBaseStatStrength();changeEnemyDefenseType();lockTextFields()">
+    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage.">
+    <input type="radio" name="musk" id="musketeer_checkbox" onclick="setClassMusketeer();displayRangedEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
+    <img src="Icon_Class_Musketeer.png" alt="Musketeer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge.">
+    <input type="radio" name="priv" id="privateer_checkbox" onclick="setClassPrivateer();displayMeleeEpics();displayRangedEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
+    <img src="Icon_Class_Privateer.png" alt="Privateer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice.">
+    <input type="radio" name="swash" id="swashbuckler_checkbox" onclick="setClassSwashbuckler();displayMeleeEpics();changeBaseStatAgility();changeEnemyDefenseType();lockTextFields()">
+    <img src="Icon_Class_Swashbuckler.png" alt="Swashbuckler" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge.">
+    <input type="radio" name="wd" id="witchdoctor_checkbox" onclick="setClassWitchdoctor();displayMagicalEpics();changeBaseStatWill();changeEnemyDefenseType();lockTextFields()">
+    <img src="Icon_Class_Witchdoctor.png" alt="Witchdoctor" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers.">
 
 
 	Unit level: <input type="number" name="u_level" id="unit_level" min="1" max="70">
     <br/>
-    Use Default Stats: <input type="checkbox" name="use_default" id="hide_checkbox" checked onclick="hideStats()" > &nbsp&nbsp&nbsp
+    Use Default Stats: <input type="checkbox" name="use_default" id="hide_checkbox" checked onclick="hideStats()"> &nbsp&nbsp&nbsp
         <div id="privateer_selector">
-        <input type="checkbox" name="select_melee" id="melee_privateer" onclick="setPrivateerMelee();displayMeleeEpics();changeEnemyDefenseType()"> <text>Melee</text>
-        <input type="checkbox" name="select_ranged" id="ranged_privateer" onclick="setPrivateerRanged();displayRangedEpics();changeEnemyDefenseType()"> <text>Ranged</text>
+        <input type="radio" name="select_melee" id="melee_privateer" onclick="setPrivateerMelee();displayMeleeEpics();changeEnemyDefenseType()"> <text>Melee</text>
+        <input type="radio" name="select_ranged" id="ranged_privateer" onclick="setPrivateerRanged();displayRangedEpics();changeEnemyDefenseType()"> <text>Ranged</text>
         </div>
     <br/>
     <div id="default_checked">
-    <img src="Icon_Attribute_Accuracy.png" width="30px" value="0" alt="Accuracy">
+    <img src="Icon_Attribute_Accuracy.png" width="30px" value="0" alt="Accuracy" title="Accuracy increases your chances of a successful attack">
     <input type="number" min="0" name="accuracy" id="unit_accuracy">
-    <img src="Icon_Attribute_Dodge.png" width="30px" value="0" alt="Dodge">
+    <img src="Icon_Attribute_Dodge.png" width="30px" value="0" alt="Dodge" title="Dodge decreases the enemy's chances of a successful attack">
     <input type="number" min="0" name="dodge" id="unit_dodge">
-    <img src="Icon_Attribute_Damage.png" width="30px" value="0" alt="Damage">
+    <img src="Icon_Attribute_Damage.png" width="30px" value="0" alt="Damage" title="Damage is dealt to the enemy's Health after attacking">
     <input type="number" min="0" name="damage" id="unit_damage">
     <br/>
-    <img src="Icon_Attribute_Health.png" width="30px" value="0" alt="Health">
+    <img src="Icon_Attribute_Health.png" width="30px" value="0" alt="Health" title="Health is how much Damage can be taken before being defeated">
     <input type="number" min="0" name="health" id="unit_health">
-    <img src="Icon_Attribute_Strength.png" width="30px" value="0" alt="Base Stat" id="base_stat_image">
+    <img src="Icon_Attribute_Strength.png" width="30px" value="0" alt="Base Stat" id="base_stat_image" title="Base Stat gives you an edge over an enemy whose Base Stat of the same type is lower">
     <input type="number" min="0" name="base_stat" id="unit_base_stat">
-    <img src="Icon_Attribute_Armor.png" width="30px" value="0" alt="Armor/Resist" id="armor_image">
+    <img src="Icon_Attribute_Armor.png" width="30px" value="0" alt="Armor/Resist" id="armor_image" title="Armor and Resist decrease the amount of Damage you take">
     <input type="number" min="0" name="armor" id="unit_defense">
     </div>
     <br/>
     <div id="epic_abilities">
-    Enter Epic Ability ranks. If unit does not have an Epic Ability, leave blank.
+    Click to increase epic ability ranks. Mouseover for descriptions.
     <br/>
-    <text id="blade_storm_text">Blade Storm:</text> <input type="number" min="0" max="3" name="BS" id="blade_storm"> <text id="relentless_text">Relentless:</text> <input type="number" min="0" max="3" name="R" id="relentless"><br/>
-    <text id="cheap_shot_text">Cheap Shot:</text> <input type="number" min="0" max="3" name="CS" id="cheap_shot"> <text id="repel_boarders_text">Repel Boarders:</text> <input type="number" min="0" max="3" name="RB" id="repel_boarders"><br/>
-    <text id="first_strike_text">First Strike:</text> <input type="number" min="0" max="3" name="FS" id="first_strike"> <text id="riposte_text">Riposte:</text> <input type="number" min="0" max="3" name="Ri" id="riposte"><br/>
-    <text id="flanking_text">Flanking:</text> <input type="number" min="0" max="3" name="F" id="flanking"> <text id="second_chance_text">Second Chance:</text> <input type="number" min="0" max="3" name="SC" id="second_chance"><br/>
-    <text id="hold_the_line_text">Hold the Line:</text> <input type="number" min="0" max="3" name="HtL" id="hold_the_line"> <text id="vengeance_strike_text">Vengeance Strike:</text> <input type="number" min="0" max="3" name="VS" id="vengeance_strike">
+    <img id="blade_storm" width="250px" src="BladeStorm0.png" title="Make a bonus attack after a critical hit" onclick="changeBladeStorm()">
+    <img id="relentless" width="250px" src="Relentless0.png" title="Gain a chance to make a bonus attack if you hit" onclick="changeRelentless()">
+    <img id="cheap_shot" width="250px" src="CheapShot0.png" title="Make a bonus attack if the enemy disengages" onclick="changeCheapShot()">
+    <img id="repel_boarders" width="250px" src="RepelBorders0.png" title="Make a bonus attack when the enemy moves into range" onclick="changeRepelBoarders()">
+    <img id="first_strike" width="250px" src="FirstStrike0.png" title="Make a bonus attack before the enemy hits" onclick="changeFirstStrike()">
+    <img id="riposte" width="250px" src="Riposte0.png" title="Make a bonus attack when the enemy misses" onclick="changeRiposte()">
+    <img id="flanking" width="250px" src="Flanking0.png" title="Make a bonus sneak attack when flanking" onclick="changeFlanking()">
+    <img id="second_chance" width="250px" src="SecondChance0.png" title="Make a bonus attack if you miss" onclick="changeSecondChance()">
+    <img id="hold_the_line" width="250px" src="HTL0.png" title="Halt enemies who move into an adjacent position to you" onclick="changeHoldTheLine()">
+    <img id="vengeance_strike" width="250px" src="VengStrike0.png" title="Make a bonus attack after the enemy hits" onclick="changeVengeanceStrike()">
     <br/>
     <br/>
     <text id="class_epics_text">Show Advanced Epics:</text> <input type="checkbox" name="class_based" id="class_based_checkbox" onchange="toggleClassBasedEpics()">
     <div id="class_based_checked">
         <br/>
-        Elusive: <input type="number" min="0" max="3" name="HTL" id="elusive" disabled>
-        Turn The Tide: <input type="number" min="0" max="3" name="TTT" id="turnthetide" disabled>
-        <br/>
-        Improved Mojo Blast: <input type="number" min="0" max="3" name="IMB" id="improvedmojoblast" disabled>
-        Witch Hunter: <input type="number" min="0" max="3" name="WH" id="witchhunter" disabled>
+        <img id="elusive" width="250px" src="Elusive0.png" title="Bonus Dodge when Health falls below 50%" onclick="changeElusive()">
+        <img id="improvedmojoblast" width="250px" src="IMB0.png" title="Basic magic attack affects a larger area. +10% Damage at Rank 3. Must be a Witchdoctor to use." onclick="changeImprovedMojoBlast()">
+        <img id="turnthetide" width="250px" src="TurnTheTide0.png" title="Additional Damage, Accuracy, and Dodge when Health falls below 50%" onclick="changeTurnTheTide()">
+        <img id="witchhunter" width="250px" src="WitchHunter0.png" title="Make a bonus attack if the enemy uses magic. Enemy loses 50% Damage" onclick="changeWitchHunter()">
         </div>
     <br/>
     <br/>
@@ -79,65 +84,63 @@
     Enemy Name: <input type="text" id="enemy_name">
     <br/>
     Enemy Class:
-    <input type="checkbox" name="e_bucc" id="enemy_buccaneer_checkbox" onclick="setEnemyClassBuccaneer();displayEnemyMeleeEpics();changeEnemyBaseStatStrength();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="e_musk" id="enemy_musketeer_checkbox" onclick="setEnemyClassMusketeer();displayEnemyRangedEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Musketeer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="e_priv" id="enemy_privateer_checkbox" onclick="setEnemyClassPrivateer();displayEnemyMeleeEpics();displayEnemyRangedEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Privateer.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="e_swash" id="enemy_swashbuckler_checkbox" onclick="setEnemyClassSwashbuckler();displayEnemyMeleeEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Swashbuckler.png" alt="Buccaneer" width="40px">
-    <input type="checkbox" name="e_wd" id="enemy_witchdoctor_checkbox" onclick="setEnemyClassWitchdoctor();displayEnemyMagicalEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
-    <img src="Icon_Class_Witchdoctor.png" alt="Buccaneer" width="40px">
-
-
-
+    <input type="radio" name="e_bucc" id="enemy_buccaneer_checkbox" onclick="setEnemyClassBuccaneer();displayEnemyMeleeEpics();changeEnemyBaseStatStrength();changeDefenseType();lockEnemyTextFields()">
+    <img src="Icon_Class_Buccaneer.png" alt="Buccaneer" width="40px" title="Buccaneers are tough warriors with high health and armor, though they tend to lack in sheer damage.">
+    <input type="radio" name="e_musk" id="enemy_musketeer_checkbox" onclick="setEnemyClassMusketeer();displayEnemyRangedEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
+    <img src="Icon_Class_Musketeer.png" alt="Buccaneer" width="40px" title="Musketeers are long-ranged fighters, boasting high accuracy but low dodge.">
+    <input type="radio" name="e_priv" id="enemy_privateer_checkbox" onclick="setEnemyClassPrivateer();displayEnemyMeleeEpics();displayEnemyRangedEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
+    <img src="Icon_Class_Privateer.png" alt="Buccaneer" width="40px" title="Privateers are versatile, resembling Buccaneers or Musketeers depending on their weapon of choice.">
+    <input type="radio" name="e_swash" id="enemy_swashbuckler_checkbox" onclick="setEnemyClassSwashbuckler();displayEnemyMeleeEpics();changeEnemyBaseStatAgility();changeDefenseType();lockEnemyTextFields()">
+    <img src="Icon_Class_Swashbuckler.png" alt="Buccaneer" width="40px" title="Swashbucklers often lack durability, but they make up for this with their high damage and dodge.">
+    <input type="radio" name="e_wd" id="enemy_witchdoctor_checkbox" onclick="setEnemyClassWitchdoctor();displayEnemyMagicalEpics();changeEnemyBaseStatWill();changeDefenseType();lockEnemyTextFields()">
+    <img src="Icon_Class_Witchdoctor.png" alt="Buccaneer" width="40px" title="Witchdoctors are the most fragile of the classes, but they also have the widest range of powers.">
 
 	Enemy level: <input type="number" name="e_level" id="enemy_level" min="1" max="70">
     <br/>
     Use Default Stats: <input type="checkbox" name="use_default" id="enemy_hide_checkbox" checked onclick="hideEnemyStats()"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <div id="enemy_privateer_selector">
-        <input type="checkbox" name="select_melee" id="enemy_melee_privateer" onclick="setEnemyPrivateerMelee();displayEnemyMeleeEpics();changeDefenseType()"> <text>Melee</text>
-        <input type="checkbox" name="select_ranged" id="enemy_ranged_privateer" onclick="setEnemyPrivateerRanged();displayEnemyRangedEpics();changeDefenseType()"> <text>Ranged</text>
+        <input type="radio" name="select_melee" id="enemy_melee_privateer" onclick="setEnemyPrivateerMelee();displayEnemyMeleeEpics();changeDefenseType()"> <text>Melee</text>
+        <input type="radio" name="select_ranged" id="enemy_ranged_privateer" onclick="setEnemyPrivateerRanged();displayEnemyRangedEpics();changeDefenseType()"> <text>Ranged</text>
     </div>
     <br/>
     <div id="enemy_default_checked">
-    <img src="Icon_Attribute_Accuracy.png" width="30px" value="0" alt="Accuracy">
+    <img src="Icon_Attribute_Accuracy.png" width="30px" value="0" alt="Accuracy" title="Accuracy increases your chances of a successful attack">
     <input type="number" min="0" name="e_accuracy" id="enemy_accuracy">
-    <img src="Icon_Attribute_Dodge.png" width="30px" value="0" alt="Dodge">
+    <img src="Icon_Attribute_Dodge.png" width="30px" value="0" alt="Dodge" title="Dodge decreases the enemy's chances of a successful attack">
     <input type="number" min="0" name="e_dodge" id="enemy_dodge">
-    <img src="Icon_Attribute_Damage.png" width="30px" value="0" alt="Damage">
+    <img src="Icon_Attribute_Damage.png" width="30px" value="0" alt="Damage" title="Damage is dealt to the enemy's Health after attacking">
     <input type="number" min="0" name="e_damage" id="enemy_damage">
     <br/>
-    <img src="Icon_Attribute_Health.png" width="30px" value="0" alt="Health">
+    <img src="Icon_Attribute_Health.png" width="30px" value="0" alt="Health" title="Health is how much Damage can be taken before being defeated">
     <input type="number" min="0" name="e_health" id="enemy_health">
-    <img src="Icon_Attribute_Strength.png" width="30px" value="0" alt="Base Stat" id="enemy_base_stat_image">
+    <img src="Icon_Attribute_Strength.png" width="30px" value="0" alt="Base Stat" id="enemy_base_stat_image" title="Base Stat gives you an edge over an enemy whose Base Stat of the same type is lower">
     <input type="number" min="0" name="e_strength" id="enemy_base_stat">
-    <img src="Icon_Attribute_Armor.png" width="30px" value="0" alt="Armor/Resist" id="enemy_armor_image">
+    <img src="Icon_Attribute_Armor.png" width="30px" value="0" alt="Armor/Resist" id="enemy_armor_image" title="Armor and Resist decrease the amount of Damage you take">
     <input type="number" min="0" name="e_resist" id="enemy_defense">
     </div>
     <br/>
     <div id="enemy_epic_abilities">
-    Enter Epic Ability ranks. If enemy does not have an Epic Ability, leave blank.
+    Click to increase epic ability ranks. Mouseover for descriptions.
     <br/>
-    <text id="enemy_blade_storm_text">Blade Storm:</text> <input type="number" min="0" max="3" name="e_BS" id="enemy_blade_storm"> <text id="enemy_relentless_text">Relentless:</text> <input type="number" min="0" max="3" name="e_R" id="enemy_relentless"><br/>
-    <text id="enemy_cheap_shot_text">Cheap Shot:</text> <input type="number" min="0" max="3" name="e_CS" id="enemy_cheap_shot">
-    <text id="enemy_repel_boarders_text">Repel Boarders:</text> <input type="number" min="0" max="3" name="e_RB" id="enemy_repel_boarders"><br/>
-    <text id="enemy_first_strike_text">First Strike:</text> <input type="number" min="0" max="3" name="e_FS" id="enemy_first_strike">
-    <text id="enemy_riposte_text">Riposte:</text> <input type="number" min="0" max="3" name="e_Ri" id=enemy_riposte><br/>
-    <text id="enemy_flanking_text">Flanking:</text> <input type="number" min="0" max="3" name="e_F" id="enemy_flanking">
-    <text id="enemy_second_chance_text">Second Chance:</text> <input type="number" min="0" max="3" name="e_SC" id="enemy_second_chance"><br/>
-    <text id="enemy_second_chance_text">Hold the Line:</text> <input type="number" min="0" max="3" name="e_HtL" id="enemy_hold_the_line"> <text id="enemy_vengeance_strike_text">Vengeance Strike:</text> <input type="number" min="0" max="3" name="e_VS" id="enemy_vengeance_strike">
+    <img id="enemy_blade_storm" width="250px" src="BladeStorm0.png" title="Make a bonus attack after a critical hit" onclick="isEnemy();changeBladeStorm()">
+    <img id="enemy_relentless" width="250px" src="Relentless0.png" title="Gain a chance to make a bonus attack if you hit" onclick="isEnemy();changeRelentless()">
+    <img id="enemy_cheap_shot" width="250px" src="CheapShot0.png" title="Make a bonus attack if the enemy disengages" onclick="isEnemy();changeCheapShot()">
+    <img id="enemy_repel_boarders" width="250px" src="RepelBorders0.png" title="Make a bonus attack when the enemy moves into range" onclick="isEnemy();changeRepelBoarders()">
+    <img id="enemy_first_strike" width="250px" src="FirstStrike0.png" title="Make a bonus attack before the enemy hits" onclick="isEnemy();changeFirstStrike()">
+    <img id="enemy_riposte" width="250px" src="Riposte0.png" title="Make a bonus attack when the enemy misses" onclick="isEnemy();changeRiposte()">
+    <img id="enemy_flanking" width="250px" src="Flanking0.png" title="Make a bonus sneak attack when flanking" onclick="isEnemy();changeFlanking()">
+    <img id="enemy_second_chance" width="250px" src="SecondChance0.png" title="Make a bonus attack if you miss" onclick="isEnemy();changeSecondChance()">
+    <img id="enemy_hold_the_line" width="250px" src="HTL0.png" title="Halt enemies who move into an adjacent position to you" onclick="isEnemy();changeHoldTheLine()">
+    <img id="enemy_vengeance_strike" width="250px" src="VengStrike0.png" title="Make a bonus attack after the enemy hits" onclick="isEnemy();changeVengeanceStrike()">
     <br/>
     <br/>
     <text id="enemy_class_epics_text">Show Advanced Epics:</text> <input type="checkbox" name="enemy_class_based" id="enemy_class_based_checkbox" onchange="toggleEnemyClassBasedEpics()">
     <div id="enemy_class_based_checked">
         <br/>
-        Elusive: <input type="number" min="0" max="3" name="e_elusive" id="enemyelusive" disabled>
-        Turn The Tide: <input type="number" min="0" max="3" name="e_TTT" id="enemyturnthetide" disabled>
-        <br/>
-        Improved Mojo Blast: <input type="number" min="0" max="3" name="e_IMB" id="enemyimprovedmojoblast" disabled>
-        Witch Hunter: <input type="number" min="0" max="3" name="e_WH" id="enemywitchhunter" disabled>
+        <img id="enemyelusive" width="250px" src="Elusive0.png" title="Bonus Dodge when Health falls below 50%" onclick="isEnemy();changeElusive()">
+        <img id="enemyimprovedmojoblast" width="250px" src="IMB0.png" title="Basic magic attack affects a larger area. +10% Damage at Rank 3. Must be a Witchdoctor to use." onclick="isEnemy();changeImprovedMojoBlast()">
+        <img id="enemyturnthetide" width="250px" src="TurnTheTide0.png" title="Additional Damage, Accuracy, and Dodge when Health falls below 50%" onclick="isEnemy();changeTurnTheTide()">
+        <img id="enemywitchhunter" width="250px" src="WitchHunter0.png" title="Make a bonus attack if the enemy uses magic. Enemy loses 50% Damage" onclick="isEnemy();changeWitchHunter()">
         </div>
     <br/>
     <br/>
@@ -145,11 +148,19 @@
     </div>
     </form>
 </div>
-    <p id="choice1html"></p><text id="defeatchancehtml"></text><br><text id="enemydefeatchancehtml"></text>
+</div>
+<div id="results_box" style="height:200px;width:375px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+<p id="choice1html"></p><text id="defeatchancehtml"></text><br><text id="enemydefeatchancehtml"></text>
     <br><br>
     <text id="alternativestext"></text>
     <br>
     <text id="otherchoiceshtml"></text>
 </div>
+    <br>
+<div id="simulation" style="height:375px;width:375px;overflow:auto;background-color:black;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">Click the button below to generate a simulation. Simulations are possible outcomes that can occur, and the simulator analyzes the likelihood of each to determine the best option.</div> 
+    <br>
+    <div id="simulation_button">
+    <button type="button" style="height:30px;width:397px;font-size:18px" onclick="newSimulation();combatSimulator()">New Simulation</button></div>
+    <div id="return_button"><button type="button" style="height:50px;width:397px;font-size:18px" onclick="returnToSimulator()">Return to Simulator</button></div>
 </body>
 </html>
